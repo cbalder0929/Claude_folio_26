@@ -24,7 +24,8 @@
   <nav class="navbar" id="navbar">
     <ul class="nav-links">
       <li><a href="#projects" data-i18n="navProjects">Projects</a></li>
-      <li><a href="#about" data-i18n="navAbout">About</a></li>
+      <li><a href="#about" data-i18n="navAbout">Resume</a></li>
+      <li><a href="#gallery" data-i18n="navGallery">Gallery</a></li>
       <li><a href="#contact" data-i18n="navContact">Contact</a></li>
     </ul>
     <!-- Logo sits on the RIGHT — hover reveals controls -->
@@ -65,7 +66,6 @@
 
     <!-- LAYER 3: Content -->
     <div class="hero__content">
-      <p class="hero__eyebrow" data-i18n="heroEyebrow">Visual Intelligence Studio</p>
 
       <h1 class="hero__title">
         <span data-i18n="heroTitle1">Crafting digital</span><br />
@@ -270,6 +270,62 @@
   </section>
 
   <!-- ============================================================
+       GALLERY
+       ============================================================ -->
+  <section class="gallery-section" id="gallery">
+    
+    <!-- Background layers for parallax effect -->
+    <div class="gallery__bg" id="galleryBg"></div>
+    <div class="gallery__droplets" id="galleryDroplets"></div>
+    <div class="gallery__overlay"></div>
+
+    <div class="section-inner">
+      <div class="gallery-header">
+        <p class="section-label" data-i18n="galleryLabel">Visual Work</p>
+        <h2 class="section-title" data-i18n="galleryTitle">Gallery & Showcase</h2>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <div class="gallery-image" style="background: linear-gradient(135deg, #2d8fce 0%, #4eb3e8 100%);"></div>
+          <h3 class="gallery-item-title">Design System Components</h3>
+          <p class="gallery-item-desc">Comprehensive UI component library</p>
+        </div>
+
+        <div class="gallery-item">
+          <div class="gallery-image" style="background: linear-gradient(135deg, #1a5a8a 0%, #2d8fce 100%);"></div>
+          <h3 class="gallery-item-title">Dashboard Interface</h3>
+          <p class="gallery-item-desc">Real-time analytics visualization</p>
+        </div>
+
+        <div class="gallery-item">
+          <div class="gallery-image" style="background: linear-gradient(135deg, #162840 0%, #1a5a8a 100%);"></div>
+          <h3 class="gallery-item-title">Mobile Experience</h3>
+          <p class="gallery-item-desc">Responsive interface design</p>
+        </div>
+
+        <div class="gallery-item">
+          <div class="gallery-image" style="background: linear-gradient(135deg, #4eb3e8 0%, #7dd3ff 100%);"></div>
+          <h3 class="gallery-item-title">Data Visualization</h3>
+          <p class="gallery-item-desc">Interactive chart systems</p>
+        </div>
+
+        <div class="gallery-item">
+          <div class="gallery-image" style="background: linear-gradient(135deg, #0f1f35 0%, #162840 100%);"></div>
+          <h3 class="gallery-item-title">Brand Guidelines</h3>
+          <p class="gallery-item-desc">Cohesive visual language</p>
+        </div>
+
+        <div class="gallery-item">
+          <div class="gallery-image" style="background: linear-gradient(135deg, #2d8fce 0%, #1a5a8a 100%);"></div>
+          <h3 class="gallery-item-title">Typography Specimens</h3>
+          <p class="gallery-item-desc">Typeface showcase & pairing</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
        CONTACT / FOOTER
        ============================================================ -->
   <footer id="contact">
@@ -285,8 +341,8 @@
       <div class="footer-links">
         <h4 data-i18n="footerNavTitle">Navigation</h4>
         <ul>
-          <li><a href="#about" data-i18n="navAbout">About</a></li>
           <li><a href="#projects" data-i18n="navProjects">Projects</a></li>
+          <li><a href="#gallery" data-i18n="navGallery">Gallery</a></li>
           <li><a href="#" data-i18n="footerResume">Resume</a></li>
         </ul>
       </div>
@@ -294,17 +350,16 @@
       <div class="footer-links">
         <h4 data-i18n="navContact">Contact</h4>
         <ul>
-          <li><a href="mailto:hello@example.com">hello@example.com</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">GitHub</a></li>
+          <li><a href="balderas0221@outlook.com">balderas0221@outlook.com</a></li>
+          <li><a href="https://www.linkedin.com/in/charles-m-balderas-70a3b0280
+
+">LinkedIn</a></li>
+          <li><a href="https://github.com/cbalder0929">GitHub</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <p data-i18n="footerCopy">© 2026 — Visual Intelligence Studio</p>
-      <p data-i18n="footerCraft">Crafted with precision</p>
-    </div>
+
   </footer>
 
 

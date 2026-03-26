@@ -12,7 +12,10 @@ const heroBg          = document.getElementById('heroBg');
 const heroDroplets    = document.getElementById('heroDroplets');
 const projectsBg      = document.getElementById('projectsBg');
 const projectsDroplets= document.getElementById('projectsDroplets');
+const galleryBg       = document.getElementById('galleryBg');
+const galleryDroplets = document.getElementById('galleryDroplets');
 const projectsSection = document.getElementById('projects');
+const gallerySection  = document.getElementById('gallery');
 const navbar          = document.getElementById('navbar');
 
 // Parallax speed coefficients
@@ -47,6 +50,12 @@ function renderParallax() {
   const projRelativeScroll = scrollY - projTop;
   projectsBg.style.transform       = `translateY(${projRelativeScroll * BG_SPEED}px)`;
   projectsDroplets.style.transform = `translateY(${projRelativeScroll * DROP_SPEED}px)`;
+
+  // Gallery section — parallax relative to its own top edge
+  const galleryTop            = gallerySection.offsetTop;
+  const galleryRelativeScroll = scrollY - galleryTop;
+  galleryBg.style.transform       = `translateY(${galleryRelativeScroll * BG_SPEED}px)`;
+  galleryDroplets.style.transform = `translateY(${galleryRelativeScroll * DROP_SPEED}px)`;
 
   // Navbar glass effect on scroll
   if (scrollY > 40) {
@@ -145,6 +154,7 @@ const translations = {
   en: {
     navAbout:      'About',
     navProjects:   'Projects',
+    navGallery:    'Gallery',
     navContact:    'Contact',
     lightMode:     'Light Mode',
     heroEyebrow:   'Visual Intelligence Studio',
@@ -166,6 +176,8 @@ const translations = {
     workLabel:     'Selected Work',
     workTitle:     'Projects &amp; Case Studies',
     showMore:      'Show More Projects',
+    galleryLabel:  'Visual Work',
+    galleryTitle:  'Gallery &amp; Showcase',
     footerTagline: 'Building interfaces that think clearly and feel inevitable. Available for select engagements.',
     footerNavTitle:'Navigation',
     footerResume:  'Resume',
@@ -175,6 +187,7 @@ const translations = {
   es: {
     navAbout:      'Acerca',
     navProjects:   'Proyectos',
+    navGallery:    'Galería',
     navContact:    'Contacto',
     lightMode:     'Modo Claro',
     heroEyebrow:   'Estudio de Inteligencia Visual',
@@ -196,6 +209,8 @@ const translations = {
     workLabel:     'Trabajo Selecto',
     workTitle:     'Proyectos y Casos de Estudio',
     showMore:      'Ver Más Proyectos',
+    galleryLabel:  'Trabajo Visual',
+    galleryTitle:  'Galería y Vitrina',
     footerTagline: 'Construyendo interfaces que piensan con claridad y se sienten inevitables. Disponible para proyectos selectos.',
     footerNavTitle:'Navegación',
     footerResume:  'Currículum',
