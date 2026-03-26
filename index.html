@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude_Portfolio</title>
+
+  <!-- Distinctive font pairing: Cormorant for display, Syne for UI -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700&family=DM+Mono:wght@300;400&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <nav class="navbar" id="navbar">
+    <ul class="nav-links">
+      <li><a href="#projects" data-i18n="navProjects">Projects</a></li>
+      <li><a href="#about" data-i18n="navAbout">About</a></li>
+      <li><a href="#contact" data-i18n="navContact">Contact</a></li>
+    </ul>
+    <!-- Logo sits on the RIGHT — hover reveals controls -->
+    <div class="nav-logo-wrapper">
+      <a href="#" class="nav-logo">
+        <img src="imgs/mainLogo.png" alt="Logo" />
+      </a>
+
+      <!-- Hover panel: Light Mode + Language toggle -->
+      <div class="logo-controls">
+        <button class="ctrl-btn" id="lightModeBtn">
+          <span class="ctrl-icon">☀</span>
+          <span data-i18n="lightMode">Light Mode</span>
+        </button>
+        <button class="ctrl-btn" id="langBtn">
+          <span class="ctrl-icon">🌐</span>
+          <span id="langLabel">Español</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO — 3-LAYER PARALLAX
+       Layer 0 (html bg) → Layer 1 (.hero__bg) → Layer 2 (.hero__droplets)
+       → Layer 3 (.hero__glass-sheen) → Layer 4 (.hero__content)
+       ============================================================ -->
+  <section class="hero" id="hero">
+
+    <!-- LAYER 1: Background — moves slowly with scroll -->
+    <div class="hero__bg" id="heroBg"></div>
+
+    <!-- LAYER 2: Droplet glass layer — moves faster than bg -->
+    <div class="hero__droplets" id="heroDroplets"></div>
+
+    <!-- Gradient sheen / vignette between layers and content -->
+    <div class="hero__glass-sheen"></div>
+
+    <!-- LAYER 3: Content -->
+    <div class="hero__content">
+      <p class="hero__eyebrow" data-i18n="heroEyebrow">Visual Intelligence Studio</p>
+
+      <h1 class="hero__title">
+        <span data-i18n="heroTitle1">Crafting digital</span><br />
+        <em data-i18n="heroTitleEm">clarity</em> <span data-i18n="heroTitle2">through code</span>
+      </h1>
+
+      <p class="hero__subtitle" data-i18n="heroSubtitle">
+        Full-stack engineer and UI architect specialising in immersive,
+        data-driven interfaces that communicate with precision.
+      </p>
+
+      <div class="hero__cta-group">
+        <a href="#projects" class="btn-primary" data-i18n="ctaProjects">View Projects</a>
+        <a href="#contact" class="btn-ghost" data-i18n="ctaContact">Get in Touch</a>
+      </div>
+    </div>
+
+    <!-- Scroll cue -->
+    <div class="hero__scroll-cue">
+      <div class="scroll-line"></div>
+      <span data-i18n="scroll">Scroll</span>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       ABOUT STRIP
+       ============================================================ -->
+  <!-- ============================================================
+       ABOUT / RESUME STRIP
+       ============================================================ -->
+  <section class="about-strip" id="about">
+    <div class="section-inner">
+      <div>
+        <p class="section-label" data-i18n="aboutLabel">Background</p>
+        <h2 class="section-title" style="margin-bottom: 28px;">
+          <span data-i18n="aboutTitle">Precision at<br />every layer</span>
+        </h2>
+        <p data-i18n="aboutP1">
+          I build interfaces where engineering rigour and visual craft reinforce each other.
+          From pixel-level typography decisions to distributed system architecture, I treat
+          both as inseparable disciplines.
+        </p>
+        <p data-i18n="aboutP2">
+          My work spans interactive data platforms, real-time dashboards,
+          and high-fidelity design systems — always prioritising clarity,
+          performance, and the subtle details that separate good from memorable.
+        </p>
+      </div>
+
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-card__number">07+</div>
+          <div class="stat-card__label" data-i18n="stat1">Years of experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">40+</div>
+          <div class="stat-card__label" data-i18n="stat2">Products shipped</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">12</div>
+          <div class="stat-card__label" data-i18n="stat3">Industries served</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__number">∞</div>
+          <div class="stat-card__label" data-i18n="stat4">Iterations committed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROJECTS
+       ============================================================ -->
+  <section class="projects-section" id="projects">
+
+    <!-- LAYER 1: Rain background — slow parallax -->
+    <div class="projects__bg" id="projectsBg"></div>
+
+    <!-- LAYER 2: Droplet glass layer — faster parallax, edge-masked -->
+    <div class="projects__droplets" id="projectsDroplets"></div>
+
+    <!-- Dark overlay to keep cards readable -->
+    <div class="projects__overlay"></div>
+
+    <div class="section-inner">
+
+      <div class="projects-header">
+        <p class="section-label" data-i18n="workLabel">Selected Work</p>
+        <h2 class="section-title" data-i18n="workTitle">Projects &amp; Case Studies</h2>
+      </div>
+
+      <!-- Grid wrapper for the fade overlay -->
+      <div class="projects-grid-wrapper">
+
+        <div class="projects-grid" id="projectsGrid">
+
+          <!-- ROW 1 — always visible -->
+
+          <article class="project-card">
+            <p class="card-number">001</p>
+            <h3 class="card-title">Lens Analytics Platform</h3>
+            <p class="card-desc">
+              Real-time event telemetry dashboard for a SaaS product with 2M+ daily active users.
+              Designed for sub-200ms query latency on live data.
+            </p>
+            <div class="card-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">WebSocket</span>
+              <span class="tech-tag">ClickHouse</span>
+              <span class="tech-tag">D3.js</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <p class="card-number">002</p>
+            <h3 class="card-title">Meridian Design System</h3>
+            <p class="card-desc">
+              An enterprise-grade component library spanning 120+ primitives, a token pipeline,
+              and a living Storybook environment across 3 product teams.
+            </p>
+            <div class="card-tech">
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Storybook</span>
+              <span class="tech-tag">Figma Tokens</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <p class="card-number">003</p>
+            <h3 class="card-title">Orbit CMS Interface</h3>
+            <p class="card-desc">
+              Headless CMS front-end with inline editing, multi-locale support,
+              and a custom structured-text renderer optimised for editorial teams.
+            </p>
+            <div class="card-tech">
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">DatoCMS</span>
+              <span class="tech-tag">GraphQL</span>
+            </div>
+          </article>
+
+          <!-- ROW 2 — hidden until "Show More" -->
+
+          <article class="project-card">
+            <p class="card-number">004</p>
+            <h3 class="card-title">Pulse Health Dashboard</h3>
+            <p class="card-desc">
+              Accessible, HIPAA-aligned patient vitals interface with configurable alert thresholds
+              and integration with HL7 FHIR data streams.
+            </p>
+            <div class="card-tech">
+              <span class="tech-tag">Vue 3</span>
+              <span class="tech-tag">FHIR API</span>
+              <span class="tech-tag">Chart.js</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <p class="card-number">005</p>
+            <h3 class="card-title">Vanta E-Commerce Engine</h3>
+            <p class="card-desc">
+              Conversion-optimised storefront achieving a 34% checkout completion uplift through
+              progressive disclosure patterns and server components.
+            </p>
+            <div class="card-tech">
+              <span class="tech-tag">Next.js 14</span>
+              <span class="tech-tag">Shopify</span>
+              <span class="tech-tag">Tailwind</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <p class="card-number">006</p>
+            <h3 class="card-title">Spectrum AI Workbench</h3>
+            <p class="card-desc">
+              Prompt engineering interface and model evaluation harness for a series-B AI startup,
+              featuring side-by-side diff views and custom model adapters.
+            </p>
+            <div class="card-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">LangChain</span>
+            </div>
+          </article>
+
+        </div><!-- /projects-grid -->
+
+        <!-- Frosted fade overlay — hides row 2 before expand -->
+        <div class="projects-fade-overlay" id="fadeOverlay"></div>
+
+      </div><!-- /projects-grid-wrapper -->
+
+      <!-- Show More button -->
+      <div class="show-more-wrap">
+        <button class="btn-show-more" id="showMoreBtn" data-i18n="showMore">
+          Show More Projects
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT / FOOTER
+       ============================================================ -->
+  <footer id="contact">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="imgs/mainLogo.png" alt="Logo" />
+        <p data-i18n="footerTagline">
+          Building interfaces that think clearly and feel inevitable.
+          Available for select engagements.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h4 data-i18n="footerNavTitle">Navigation</h4>
+        <ul>
+          <li><a href="#about" data-i18n="navAbout">About</a></li>
+          <li><a href="#projects" data-i18n="navProjects">Projects</a></li>
+          <li><a href="#" data-i18n="footerResume">Resume</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4 data-i18n="navContact">Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p data-i18n="footerCopy">© 2026 — Visual Intelligence Studio</p>
+      <p data-i18n="footerCraft">Crafted with precision</p>
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
