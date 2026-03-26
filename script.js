@@ -92,6 +92,7 @@ renderParallax();
  * 3. Hide the button itself
  */
 const showMoreBtn  = document.getElementById('showMoreBtn');
+const showLessBtn  = document.getElementById('showLessBtn');
 const projectsGrid = document.getElementById('projectsGrid');
 const fadeOverlay  = document.getElementById('fadeOverlay');
 
@@ -103,8 +104,26 @@ showMoreBtn.addEventListener('click', function () {
   fadeOverlay.classList.add('hidden');
   setTimeout(() => { fadeOverlay.style.display = 'none'; }, 600);
 
-  // Hide the button
-  showMoreBtn.classList.add('hidden');
+  // Swap buttons
+  showMoreBtn.style.display = 'none';
+  showLessBtn.style.display = '';
+});
+
+showLessBtn.addEventListener('click', function () {
+  // Collapse the grid
+  projectsGrid.classList.remove('expanded');
+
+  // Restore the frosted overlay
+  fadeOverlay.style.display = '';
+  // Re-trigger the transition by removing 'hidden' after a brief tick
+  requestAnimationFrame(() => { fadeOverlay.classList.remove('hidden'); });
+
+  // Swap buttons
+  showLessBtn.style.display = 'none';
+  showMoreBtn.style.display = '';
+
+  // Scroll back up to the projects section top
+  document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 
@@ -176,6 +195,7 @@ const translations = {
     workLabel:     'Selected Work',
     workTitle:     'Projects &amp; Case Studies',
     showMore:      'Show More Projects',
+    showLess:      'Show Less',
     galleryLabel:  'Visual Work',
     galleryTitle:  'Gallery &amp; Showcase',
     footerTagline: 'Building interfaces that think clearly and feel inevitable. Available for select engagements.',
@@ -209,6 +229,7 @@ const translations = {
     workLabel:     'Trabajo Selecto',
     workTitle:     'Proyectos y Casos de Estudio',
     showMore:      'Ver Más Proyectos',
+    showLess:      'Ver Menos',
     galleryLabel:  'Trabajo Visual',
     galleryTitle:  'Galería y Vitrina',
     footerTagline: 'Construyendo interfaces que piensan con claridad y se sienten inevitables. Disponible para proyectos selectos.',
