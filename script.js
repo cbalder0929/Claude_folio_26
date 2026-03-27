@@ -80,6 +80,7 @@ function onScroll() {
 }
 
 window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('resize', renderParallax);
 
 // Initial render (no scroll yet)
 renderParallax();

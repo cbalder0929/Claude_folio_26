@@ -303,7 +303,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 24px 100px 24px;
+  padding: 0 24px 40px 24px;
 }
 
 .hero__eyebrow {
@@ -484,7 +484,7 @@ section {
   }
 
   .about-strip .section-inner>div {
-    width: 50vw;
+    width: 75vw;
     margin: 0 auto;
   }
 }
@@ -901,98 +901,78 @@ footer {
   margin: 0 auto;
   padding: 0 32px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 48px;
+  justify-content: center;
 }
 
-.footer-logo-wrapper {
-  position: relative;
-  display: inline-block;
-  width: 175px;
-  cursor: help;
+.footer-contact-panel {
+  width: min(100%, 720px);
+  padding: 36px;
+  background:
+    linear-gradient(135deg, rgba(78, 179, 232, 0.08), rgba(78, 179, 232, 0.02)),
+    rgba(15, 31, 53, 0.42);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  backdrop-filter: blur(16px) saturate(135%);
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+  box-shadow: var(--glass-shadow);
 }
 
-.footer-logo {
-  width: 100%;
-  /* Make the logo 50% the size it was previously */
-  filter: drop-shadow(0 0 6px rgba(45, 143, 206, 0.3));
-  margin-bottom: 16px;
-  transition: transform 0.3s var(--ease-glass);
-}
-
-.footer-logo-wrapper:hover .footer-logo {
-  transform: scale(1.05);
-}
-
-.footer-bubble {
-  display: none;
-}
-
-@media (min-width: 1025px) {
-  .footer-bubble {
-    display: block;
-    position: absolute;
-    bottom: 80%;
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
-    background: rgba(10, 20, 35, 0.95);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
-    color: var(--cream);
-    padding: 12px 20px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.35s var(--ease-glass), transform 0.35s var(--ease-glass);
-    z-index: 100;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  }
-
-  .footer-bubble::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 6px;
-    border-style: solid;
-    border-color: rgba(10, 20, 35, 0.95) transparent transparent transparent;
-  }
-
-  .footer-logo-wrapper:hover .footer-bubble {
-    opacity: 1;
-    transform: translateX(-50%) translateY(-10px);
-  }
-}
-
-.footer-links h4 {
+.footer-kicker {
   font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.22em;
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--blue-light);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
-.footer-links ul {
-  list-style: none;
+.footer-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.1rem, 4vw, 3.4rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--cream);
+  margin-bottom: 28px;
+}
+
+.footer-contact-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
-.footer-links a {
-  font-size: 0.84rem;
-  color: var(--text-secondary);
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 20px;
+  border: 1px solid rgba(78, 179, 232, 0.14);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: border-color 0.25s, transform 0.25s, background 0.25s;
 }
 
-.footer-links a:hover {
-  color: var(--cream);
+.footer-contact-item:hover {
+  border-color: rgba(78, 179, 232, 0.34);
+  background: rgba(78, 179, 232, 0.08);
+  transform: translateY(-2px);
+}
+
+.footer-contact-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+}
+
+.footer-contact-value {
+  font-size: 0.96rem;
+  color: var(--text-primary);
+  text-align: right;
+  word-break: break-word;
 }
 
 .footer-bottom {
@@ -1245,16 +1225,14 @@ body.light-mode footer {
   border-top-color: rgba(15, 31, 53, 0.15);
 }
 
-/* Footer bubble light mode override */
-body.light-mode .footer-bubble {
-  background: rgba(232, 224, 208, 0.95);
-  border-color: rgba(15, 31, 53, 0.15);
+body.light-mode .footer-bubble-mobile {
+  background: rgba(255, 255, 255, 0.96);
   color: #0f1f35;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 18px 40px rgba(15, 31, 53, 0.12);
 }
 
-body.light-mode .footer-bubble::after {
-  border-color: rgba(232, 224, 208, 0.95) transparent transparent transparent;
+body.light-mode .footer-bubble-mobile::after {
+  border-color: transparent transparent rgba(255, 255, 255, 0.96) transparent;
 }
 
 body.light-mode .footer-links h4 {
@@ -1277,13 +1255,8 @@ body.light-mode .footer-bottom p {
   color: rgba(15, 31, 53, 0.45);
 }
 
-/* Logo drop-shadow adapts */
 body.light-mode .nav-logo img {
   filter: drop-shadow(0 0 8px rgba(26, 90, 138, 0.35));
-}
-
-body.light-mode .footer-logo {
-  filter: drop-shadow(0 0 6px rgba(26, 90, 138, 0.25));
 }
 
 /* ============================================================
@@ -1442,6 +1415,31 @@ body.light-mode .footer-logo {
   }
 }
 
+@keyframes footerBubbleReveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes blinkCursor {
+
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
 /* ---- Light mode overrides ---- */
 body.light-mode .mobile-bottom-nav {
   background: rgba(232, 224, 208, 0.82);
@@ -1565,6 +1563,81 @@ body.light-mode .mobile-nav-item.active::after {
     padding-bottom: 100px;
   }
 
+  .footer-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 88px 24px;
+  }
+
+  .footer-brand {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: flex-start;
+    min-height: 132px;
+  }
+
+  .footer-links {
+    flex: 1 1 calc(50% - 12px);
+    min-width: 0;
+  }
+
+  .footer-links h4,
+  .footer-links ul {
+    text-align: center;
+  }
+
+  .footer-bubble-mobile {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: min(280px, calc(100vw - 64px));
+    padding: 16px 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.96);
+    color: #12243b;
+    box-shadow: 0 18px 40px rgba(7, 14, 24, 0.28);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(16px) scale(0.96);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 3;
+  }
+
+  .footer-bubble-mobile::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 18px;
+    border-width: 0 10px 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent rgba(255, 255, 255, 0.96) transparent;
+  }
+
+  .footer-bubble-mobile.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    animation: footerBubbleReveal 0.38s var(--ease-glass);
+  }
+
+  .footer-bubble-mobile-text {
+    min-height: 5.3em;
+    font-size: 0.84rem;
+    line-height: 1.6;
+    color: inherit;
+  }
+
+  .footer-bubble-mobile-text::after {
+    content: '|';
+    margin-left: 2px;
+    opacity: 0;
+  }
+
+  .footer-bubble-mobile.is-typing .footer-bubble-mobile-text::after {
+    opacity: 1;
+    animation: blinkCursor 0.8s step-end infinite;
+  }
+
   /* Show mobile bottom nav */
   .mobile-bottom-nav {
     display: flex;
@@ -1615,8 +1688,11 @@ body.light-mode .mobile-nav-item.active::after {
 @media (max-width: 600px) {
 
   .footer-inner {
-    flex-direction: column;
-    gap: 48px;
+    gap: 96px 20px;
+  }
+
+  .footer-brand {
+    flex: 1 1 100%;
   }
 
   .hero__title {
@@ -1625,7 +1701,7 @@ body.light-mode .mobile-nav-item.active::after {
   }
 
   .hero__content {
-    padding-top: -50px;
+    padding-top: 80px;
   }
 
   .hero__cta-group {
@@ -1653,6 +1729,14 @@ body.light-mode .mobile-nav-item.active::after {
 
 /* --- SMALL MOBILE (iPhone SE, etc.) --- */
 @media (max-width: 480px) {
+  .footer-inner {
+    gap: 104px 18px;
+  }
+
+  .footer-bubble-mobile {
+    width: min(250px, calc(100vw - 48px));
+  }
+
   .section-title {
     font-size: 2rem;
   }
