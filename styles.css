@@ -607,6 +607,8 @@ section {
 /* ---- FROSTED GLASS CARD ---- */
 .project-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 6px;
@@ -693,7 +695,7 @@ section {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: auto;
+  margin-bottom: 20px;
 }
 
 .tech-tag {
@@ -705,6 +707,31 @@ section {
   border-radius: 2px;
   color: var(--blue-light);
   background: rgba(45, 143, 206, 0.07);
+}
+
+/* ---- VIEW PROJECT BUTTON ---- */
+.btn-view-project {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  padding: 11px 28px;
+  background: var(--blue-bright);
+  color: #fff;
+  border: 1px solid var(--blue-bright);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  margin-top: auto;
+}
+
+.btn-view-project:hover {
+  background: var(--blue-light);
+  box-shadow: 0 0 24px rgba(78, 179, 232, 0.35);
+  transform: translateY(-2px);
 }
 
 /* ---- FROSTED FADE OVERLAY ---- */
