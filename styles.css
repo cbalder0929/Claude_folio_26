@@ -224,8 +224,7 @@ body {
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
-  min-height: 640px;
+  min-height: max(640px, 100vh);
   overflow: hidden;
 }
 
@@ -240,6 +239,7 @@ body {
   /* Darken and cool the background to push it back visually */
   filter: brightness(0.55) saturate(0.75);
   z-index: 0;
+  pointer-events: none;
 }
 
 /* ---- LAYER 2: DROPLET GLASS LAYER ---- */
@@ -272,6 +272,7 @@ body {
       rgba(0, 0, 0, 0.92) 100%);
 
   z-index: 1;
+  pointer-events: none;
 }
 
 /* Glass sheen between bg and droplet layer */
@@ -291,6 +292,13 @@ body {
       rgba(8, 16, 28, 0.00) 78%,
       rgba(8, 16, 28, 0.30) 100%);
   pointer-events: none;
+}
+
+.hero > .section-inner {
+  position: relative;
+  z-index: 10;
+  padding-top: 120px;
+  padding-bottom: 96px;
 }
 
 /* ---- LAYER 3: CONTENT ---- */
@@ -592,23 +600,89 @@ section {
   margin-bottom: 56px;
 }
 
-/* 3-column project grid */
+/* Project carousel */
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 34px 2px 34px;
 }
 
-/* Wrapper that controls the "show more" collapse */
+.projects-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* Wrapper for the carousel track and edge controls */
 .projects-grid-wrapper {
   position: relative;
+  width: 125%;
+  margin-left: -12.5%;
+  margin-top: -86px;
+  padding-top: 34px;
+  padding-bottom: 34px;
+}
+
+.project-carousel-btn {
+  position: absolute;
+  top: 50%;
+  z-index: 12;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  background: rgba(8, 16, 28, 0.72);
+  color: var(--cream);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: border-color 0.25s, color 0.25s, opacity 0.25s, transform 0.25s;
+}
+
+.project-carousel-btn span {
+  display: block;
+  font-family: 'Syne', sans-serif;
+  font-size: 2.2rem;
+  line-height: 1;
+  transform: translateY(-2px);
+}
+
+.project-carousel-btn:hover,
+.project-carousel-btn:focus-visible {
+  border-color: rgba(78, 179, 232, 0.55);
+  color: var(--blue-light);
+  outline: none;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.project-carousel-btn:disabled {
+  cursor: default;
+  opacity: 0.35;
+  transform: translateY(-50%);
+}
+
+.project-carousel-btn--prev {
+  left: clamp(-72px, -6vw, 8px);
+}
+
+.project-carousel-btn--next {
+  right: clamp(-72px, -6vw, 8px);
 }
 
 /* ---- FROSTED GLASS CARD ---- */
 .project-card {
   position: relative;
   display: flex;
+  flex: 0 0 calc((100% - 48px) / 3);
   flex-direction: column;
+  min-height: 500px;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 6px;
@@ -621,6 +695,7 @@ section {
     box-shadow 0.38s var(--ease-glass),
     border-color 0.3s;
   overflow: hidden;
+  scroll-snap-align: start;
 }
 
 /* Inner glass sheen line at top */
@@ -643,28 +718,6 @@ section {
     inset 0 1px 0 rgba(78, 179, 232, 0.12);
 }
 
-/* Hide rows beyond first — toggled by JS */
-.projects-grid .project-card:nth-child(n+4) {
-  display: none;
-}
-
-.projects-grid.expanded .project-card:nth-child(n+4) {
-  display: block;
-  animation: fadeUp 0.6s var(--ease-glass) both;
-}
-
-/* Stagger animation for revealed cards */
-.projects-grid.expanded .project-card:nth-child(4) {
-  animation-delay: 0.05s;
-}
-
-.projects-grid.expanded .project-card:nth-child(5) {
-  animation-delay: 0.12s;
-}
-
-.projects-grid.expanded .project-card:nth-child(6) {
-  animation-delay: 0.19s;
-}
 
 .card-number {
   font-family: 'DM Mono', monospace;
@@ -673,6 +726,24 @@ section {
   color: var(--blue-light);
   opacity: 0.7;
   margin-bottom: 20px;
+}
+
+.project-card-media {
+  width: 80%;
+  aspect-ratio: 1 / 1;
+  align-self: center;
+  margin-bottom: 22px;
+  border: 1px dashed rgba(78, 179, 232, 0.32);
+  border-radius: 4px;
+  background: transparent;
+  overflow: hidden;
+}
+
+.project-card-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 .card-title {
@@ -717,7 +788,9 @@ section {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
-  display: inline-block;
+  display: block;
+  width: 100%;
+  text-align: center;
   padding: 11px 28px;
   background: var(--blue-bright);
   color: #fff;
@@ -1161,8 +1234,17 @@ body.light-mode .project-card:hover {
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
+body.light-mode .project-carousel-btn {
+  background: rgba(232, 224, 208, 0.78);
+  color: #0f1f35;
+}
+
 body.light-mode .card-number {
   color: #1a5a8a;
+}
+
+body.light-mode .project-card-media {
+  border-color: rgba(26, 90, 138, 0.28);
 }
 
 body.light-mode .card-title {
@@ -1531,6 +1613,18 @@ body.light-mode .mobile-nav-item.active::after {
     gap: 20px;
   }
 
+  .project-card {
+    flex-basis: calc((100% - 20px) / 2);
+  }
+
+  .project-carousel-btn--prev {
+    left: -24px;
+  }
+
+  .project-carousel-btn--next {
+    right: -24px;
+  }
+
   .gallery-grid {
     gap: 20px;
   }
@@ -1549,10 +1643,6 @@ body.light-mode .mobile-nav-item.active::after {
   .about-strip .section-inner {
     grid-template-columns: 1fr;
     gap: 48px;
-  }
-
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   .gallery-grid {
@@ -1670,8 +1760,7 @@ body.light-mode .mobile-nav-item.active::after {
     display: flex;
   }
 
-  /* Convert grids to swipeable carousels */
-  .projects-grid,
+  /* Convert gallery grid to a swipeable carousel */
   .gallery-grid {
     display: flex;
     overflow-x: auto;
@@ -1685,30 +1774,49 @@ body.light-mode .mobile-nav-item.active::after {
     -ms-overflow-style: none;
   }
 
-  .projects-grid::-webkit-scrollbar,
   .gallery-grid::-webkit-scrollbar {
     display: none;
   }
 
-  .project-card,
   .gallery-item {
     flex: 0 0 85%;
     scroll-snap-align: center;
   }
 
-  /* Override Show More logic for horizontally scrolling projects */
-  .projects-grid .project-card:nth-child(n+4) {
-    display: block !important;
-    animation: none !important;
+  .hero > .section-inner {
+    padding-top: 104px;
+    padding-bottom: 96px;
   }
 
-  .projects-fade-overlay {
-    display: none !important;
+  .projects-grid {
+    gap: 16px;
+    margin: 0 -32px;
+    padding-left: 32px;
+    padding-right: 32px;
+    scroll-padding-left: 32px;
   }
 
-  .show-more-wrap {
-    display: none !important;
+  .project-card {
+    flex-basis: 85%;
   }
+
+  .project-carousel-btn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .project-carousel-btn span {
+    font-size: 2rem;
+  }
+
+  .project-carousel-btn--prev {
+    left: 4px;
+  }
+
+  .project-carousel-btn--next {
+    right: 4px;
+  }
+
 }
 
 /* --- MOBILE PORTRAIT (Phones) --- */

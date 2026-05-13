@@ -39,29 +39,39 @@ function renderParallax() {
   const scrollY = window.scrollY;
 
   // Hero — background layer: slow upward drift
-  heroBg.style.transform = `translateY(${scrollY * BG_SPEED}px)`;
+  if (heroBg) {
+    heroBg.style.transform = `translateY(${scrollY * BG_SPEED}px)`;
+  }
 
   // Hero — droplet layer: faster upward drift
-  heroDroplets.style.transform = `translateY(${scrollY * DROP_SPEED}px)`;
+  if (heroDroplets) {
+    heroDroplets.style.transform = `translateY(${scrollY * DROP_SPEED}px)`;
+  }
 
   // Projects section — parallax relative to its own top edge
   // so the image looks centred when the section is in view
-  const projTop            = projectsSection.offsetTop;
-  const projRelativeScroll = scrollY - projTop;
-  projectsBg.style.transform       = `translateY(${projRelativeScroll * BG_SPEED}px)`;
-  projectsDroplets.style.transform = `translateY(${projRelativeScroll * DROP_SPEED}px)`;
+  if (projectsSection && projectsBg && projectsDroplets) {
+    const projTop            = projectsSection.offsetTop;
+    const projRelativeScroll = scrollY - projTop;
+    projectsBg.style.transform       = `translateY(${projRelativeScroll * BG_SPEED}px)`;
+    projectsDroplets.style.transform = `translateY(${projRelativeScroll * DROP_SPEED}px)`;
+  }
 
   // Gallery section — parallax relative to its own top edge
-  const galleryTop            = gallerySection.offsetTop;
-  const galleryRelativeScroll = scrollY - galleryTop;
-  galleryBg.style.transform       = `translateY(${galleryRelativeScroll * BG_SPEED}px)`;
-  galleryDroplets.style.transform = `translateY(${galleryRelativeScroll * DROP_SPEED}px)`;
+  if (gallerySection && galleryBg && galleryDroplets) {
+    const galleryTop            = gallerySection.offsetTop;
+    const galleryRelativeScroll = scrollY - galleryTop;
+    galleryBg.style.transform       = `translateY(${galleryRelativeScroll * BG_SPEED}px)`;
+    galleryDroplets.style.transform = `translateY(${galleryRelativeScroll * DROP_SPEED}px)`;
+  }
 
   // Navbar glass effect on scroll
-  if (scrollY > 40) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
+  if (navbar) {
+    if (scrollY > 40) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
   }
 
   ticking = false;
@@ -86,46 +96,48 @@ window.addEventListener('resize', renderParallax);
 renderParallax();
 
 
-/**
- * SHOW MORE — Projects grid expansion
- * 1. Expand the grid (CSS class .expanded reveals hidden cards)
- * 2. Fade out + remove the frosted overlay
- * 3. Hide the button itself
- */
-const showMoreBtn  = document.getElementById('showMoreBtn');
-const showLessBtn  = document.getElementById('showLessBtn');
-const projectsGrid = document.getElementById('projectsGrid');
-const fadeOverlay  = document.getElementById('fadeOverlay');
+/* ============================================================
+   PROJECT CAROUSEL
+   ============================================================ */
+(function () {
+  const track = document.getElementById('projectsGrid');
+  const prevBtn = document.querySelector('[data-carousel-prev]');
+  const nextBtn = document.querySelector('[data-carousel-next]');
 
-showMoreBtn.addEventListener('click', function () {
-  // Reveal hidden cards
-  projectsGrid.classList.add('expanded');
+  if (!track || !prevBtn || !nextBtn) return;
 
-  // Fade and remove the frosted overlay
-  fadeOverlay.classList.add('hidden');
-  setTimeout(() => { fadeOverlay.style.display = 'none'; }, 600);
+  function getStepSize() {
+    const firstCard = track.querySelector('.project-card');
+    if (!firstCard) return track.clientWidth;
 
-  // Swap buttons
-  showMoreBtn.style.display = 'none';
-  showLessBtn.style.display = '';
-});
+    const styles = window.getComputedStyle(track);
+    const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+    return firstCard.getBoundingClientRect().width + gap;
+  }
 
-showLessBtn.addEventListener('click', function () {
-  // Collapse the grid
-  projectsGrid.classList.remove('expanded');
+  function updateButtons() {
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    const atStart = track.scrollLeft <= 1;
+    const atEnd = track.scrollLeft >= maxScroll - 1;
 
-  // Restore the frosted overlay
-  fadeOverlay.style.display = '';
-  // Re-trigger the transition by removing 'hidden' after a brief tick
-  requestAnimationFrame(() => { fadeOverlay.classList.remove('hidden'); });
+    prevBtn.disabled = atStart;
+    nextBtn.disabled = atEnd || maxScroll <= 0;
+  }
 
-  // Swap buttons
-  showLessBtn.style.display = 'none';
-  showMoreBtn.style.display = '';
+  function moveCarousel(direction) {
+    track.scrollBy({
+      left: getStepSize() * direction,
+      behavior: 'smooth'
+    });
+  }
 
-  // Scroll back up to the projects section top
-  document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
+  prevBtn.addEventListener('click', () => moveCarousel(-1));
+  nextBtn.addEventListener('click', () => moveCarousel(1));
+  track.addEventListener('scroll', updateButtons, { passive: true });
+  window.addEventListener('resize', updateButtons);
+
+  updateButtons();
+})();
 
 
 /**
