@@ -275,20 +275,22 @@ function loadProject(projectId) {
   const challengesSection = document.getElementById('challengesSection');
   const challengesContent = document.getElementById('projectChallenges');
 
-  if (project.challenges && project.challenges.length > 0) {
-    challengesSection.style.display = 'block';
-    challengesContent.innerHTML = project.challenges
-      .map(
-        challenge => `
-        <div class="challenge-item">
-          <h3>${challenge.title}</h3>
-          <p>${challenge.description}</p>
-        </div>
-      `
-      )
-      .join('');
-  } else {
-    challengesSection.style.display = 'none';
+  if (challengesSection) {
+    if (project.challenges && project.challenges.length > 0) {
+      challengesSection.style.display = 'block';
+      challengesContent.innerHTML = project.challenges
+        .map(
+          challenge => `
+          <div class="challenge-item">
+            <h3>${challenge.title}</h3>
+            <p>${challenge.description}</p>
+          </div>
+        `
+        )
+        .join('');
+    } else {
+      challengesSection.style.display = 'none';
+    }
   }
 
   // Update tech stack

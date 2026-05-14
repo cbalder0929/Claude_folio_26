@@ -236,8 +236,7 @@ body {
   /* oversized so parallax doesn't show edges */
   background: url('imgs/rain_background.jpeg') center center / cover no-repeat;
   will-change: transform;
-  /* Darken and cool the background to push it back visually */
-  filter: brightness(0.55) saturate(0.75);
+  filter: none;
   z-index: 0;
   pointer-events: none;
 }
@@ -280,17 +279,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background:
-    /* Deep vignette around edges */
-    radial-gradient(ellipse 80% 80% at 50% 50%,
-      transparent 50%,
-      rgba(8, 16, 28, 0.55) 100%),
-    /* Center clearing — where content lives */
-    linear-gradient(to right,
-      rgba(8, 16, 28, 0.30) 0%,
-      rgba(8, 16, 28, 0.00) 22%,
-      rgba(8, 16, 28, 0.00) 78%,
-      rgba(8, 16, 28, 0.30) 100%);
+  background: transparent;
   pointer-events: none;
 }
 
@@ -585,7 +574,7 @@ section {
 .projects__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(10, 20, 35, 0.55);
+  background: transparent;
   z-index: 2;
   pointer-events: none;
 }
