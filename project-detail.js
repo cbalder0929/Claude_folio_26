@@ -12,11 +12,21 @@ const projectsData = {
     number: '001',
     overview: 'Real-time event telemetry dashboard for a SaaS product with 2M+ daily active users.',
     description: 'Lens is a comprehensive analytics platform designed to handle massive data ingestion and real-time query performance. Built for a SaaS company processing millions of events daily, the platform maintains sub-200ms latency on complex aggregations across billions of data points.',
-    mediaItems: [
-      { type: 'placeholder', label: 'Dashboard Overview' },
-      { type: 'placeholder', label: 'Real-time Metrics' },
-      { type: 'placeholder', label: 'Custom Reports' }
-    ],
+mediaItems: [
+  {
+    type: 'video',
+    src: 'imgs/GalloShowdownVid - Trim.mp4',
+    label: 'Gallo Showdown Demo'
+  },
+  {
+    type: 'placeholder',
+    label: 'Real-time Metrics'
+  },
+  {
+    type: 'placeholder',
+    label: 'Custom Reports'
+  }
+],
     challenges: [
       { title: 'Performance at Scale', description: 'Optimizing queries across 2M+ daily active users and billion-row datasets while maintaining sub-200ms latency.' },
       { title: 'Real-time Updates', description: 'Implementing WebSocket connections for live data streaming without overwhelming client resources.' },
