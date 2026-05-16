@@ -96,7 +96,7 @@ mediaItems: [
     overview: 'Conversion-optimized storefront achieving 34% checkout completion uplift.',
     description: 'Vanta is a high-performance e-commerce platform built with Next.js 14 and React Server Components. Through progressive disclosure patterns and optimized checkout flows, it achieved a 34% increase in checkout completion rates.',
     mediaItems: [
-      { type: 'placeholder', label: 'Product Catalog' },
+      { type: 'video', src: 'imgs/wordlevid.mp4', label: 'Product Catalog' },
       { type: 'placeholder', label: 'Checkout Flow' },
       { type: 'placeholder', label: 'Customer Dashboard' }
     ],
