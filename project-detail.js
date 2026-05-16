@@ -19,7 +19,8 @@ mediaItems: [
     label: 'Gallo Showdown Demo'
   },
   {
-    type: 'placeholder',
+    type: 'video',
+    src: 'imgs/GalloShowdownVid.mp4',
     label: 'Real-time Metrics'
   },
   {
@@ -41,8 +42,8 @@ mediaItems: [
     overview: 'Enterprise-grade component library spanning 120+ primitives and a living Storybook environment.',
     description: 'Meridian is a comprehensive design system built to serve three product teams across a large enterprise. It includes 120+ carefully crafted components, a token pipeline for consistent theming, and integrated Figma-to-code workflows.',
     mediaItems: [
-      { type: 'placeholder', label: 'Component Library' },
-      { type: 'placeholder', label: 'Storybook UI' },
+      { type: 'video',  src: 'imgs/AgendiRecording.mp4', label: 'Component Library' },
+      { type: 'image', src: 'imgs/AgendiSS.png', label: 'Storybook UI' },
       { type: 'placeholder', label: 'Token System' }
     ],
     challenges: [
