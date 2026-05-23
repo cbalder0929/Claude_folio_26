@@ -1824,7 +1824,7 @@ body.light-mode .mobile-nav-item.active::after {
   .project-card {
     flex-basis: 100vw;
     scroll-snap-align: start;
-    min-height: unset;
+    min-height: 80vh;
     /* Extra horizontal padding so content clears the overlaid arrow buttons */
     padding-left: 56px;
     padding-right: 56px;
@@ -1833,7 +1833,7 @@ body.light-mode .mobile-nav-item.active::after {
   /* Smaller image so card fits on screen */
   .project-card > img,
   .project-card-media {
-    width: min(55%, 140px);
+    width: min(80%);
     margin-bottom: 14px;
   }
 
