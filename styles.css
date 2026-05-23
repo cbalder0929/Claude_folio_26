@@ -668,10 +668,11 @@ section {
 /* ---- FROSTED GLASS CARD ---- */
 .project-card {
   position: relative;
-  display: flex;
+  display: grid;
   flex: 0 0 calc((100% - 48px) / 3);
-  flex-direction: column;
   min-height: 500px;
+  grid-template-rows: auto minmax(190px, 1fr) auto auto auto;
+  row-gap: 0;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 6px;
@@ -709,6 +710,7 @@ section {
 
 
 .card-number {
+  grid-row: 1;
   font-family: 'DM Mono', monospace;
   font-size: 0.62rem;
   letter-spacing: 0.18em;
@@ -717,15 +719,29 @@ section {
   margin-bottom: 20px;
 }
 
+.project-card>img,
 .project-card-media {
-  width: 80%;
+  grid-row: 2;
+  width: min(80%, 220px);
   aspect-ratio: 1 / 1;
   align-self: center;
+  justify-self: center;
   margin-bottom: 22px;
+}
+
+.project-card-media {
   border: 1px dashed rgba(78, 179, 232, 0.32);
   border-radius: 4px;
   background: transparent;
   overflow: hidden;
+}
+
+.project-card>img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
 }
 
 .project-card-media img {
@@ -736,6 +752,7 @@ section {
 }
 
 .card-title {
+  grid-row: 3;
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.45rem;
   font-weight: 400;
@@ -745,6 +762,7 @@ section {
 }
 
 .card-desc {
+  grid-row: 4;
   font-size: 0.84rem;
   line-height: 1.75;
   color: var(--text-secondary);
@@ -771,6 +789,7 @@ section {
 
 /* ---- VIEW PROJECT BUTTON ---- */
 .btn-view-project {
+  grid-row: 5;
   font-family: 'Syne', sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
@@ -787,7 +806,7 @@ section {
   border-radius: 2px;
   cursor: pointer;
   transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
-  margin-top: auto;
+  align-self: end;
 }
 
 .btn-view-project:hover {
@@ -1647,6 +1666,11 @@ body.light-mode .mobile-nav-item.active::after {
     display: none;
   }
 
+  /* Hide navbar entirely on mobile — bottom nav handles navigation */
+  .navbar {
+    display: none;
+  }
+
   .section-inner {
     padding: 0 32px;
   }
@@ -1773,37 +1797,64 @@ body.light-mode .mobile-nav-item.active::after {
   }
 
   .hero > .section-inner {
-    padding-top: 104px;
-    padding-bottom: 96px;
+    padding-top: 16px;
+    padding-bottom: 80px;
+  }
+
+  /* Projects: full-viewport single-card carousel */
+  .projects-grid-wrapper {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    margin-left: 0;
+    margin-top: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
 
   .projects-grid {
-    gap: 16px;
-    margin: 0 -32px;
-    padding-left: 32px;
-    padding-right: 32px;
-    scroll-padding-left: 32px;
+    gap: 0;
+    margin: 0;
+    padding: 16px 0;
+    scroll-padding-left: 0;
   }
 
+  /* One card per view — exactly viewport width */
   .project-card {
-    flex-basis: 85%;
+    flex-basis: 100vw;
+    scroll-snap-align: start;
+    min-height: unset;
+    /* Extra horizontal padding so content clears the overlaid arrow buttons */
+    padding-left: 56px;
+    padding-right: 56px;
   }
 
+  /* Smaller image so card fits on screen */
+  .project-card > img,
+  .project-card-media {
+    width: min(55%, 140px);
+    margin-bottom: 14px;
+  }
+
+  /* Prominent arrow buttons overlaid at card edges */
   .project-carousel-btn {
-    width: 42px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
+    border-color: rgba(78, 179, 232, 0.55);
+    background: rgba(8, 16, 28, 0.80);
   }
 
   .project-carousel-btn span {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .project-carousel-btn--prev {
-    left: 4px;
+    left: 6px;
   }
 
   .project-carousel-btn--next {
-    right: 4px;
+    right: 6px;
   }
 
 }
@@ -1866,7 +1917,8 @@ body.light-mode .mobile-nav-item.active::after {
   }
 
   .project-card {
-    padding: 24px;
+    /* Keep extra horizontal padding so arrow buttons don't cover text */
+    padding: 20px 52px;
   }
 
   .card-title {
