@@ -8,10 +8,11 @@
 // ============================================================
 const projectsData = {
   '001': {
-    title: 'Lens Analytics Platform',
+    title: 'GalloShowdown',
     number: '001',
-    overview: 'Real-time event telemetry dashboard for a SaaS product with 2M+ daily active users.',
-    description: 'Lens is a comprehensive analytics platform designed to handle massive data ingestion and real-time query performance. Built for a SaaS company processing millions of events daily, the platform maintains sub-200ms latency on complex aggregations across billions of data points.',
+    overview: 'A C# and WPF rooster-fighting game about a kid, a prize rooster, and a shot at the tournament.',
+    description: "GalloShowdown is a desktop game I built in C# and WPF on .NET 8. You play a young boy whose grandfather gifts him a rooster on his 10th birthday — and from there you train, feed, breed, and battle. Six breeds, each with their own stat profile (the Black is a tank, the Guero is a glass cannon), a Housing screen to manage your stable, and a Street Fighter–style 1v1 battle loop with light and heavy attacks. I leveraged AI hard on this one — Copilot, Codex, and Claude CLI handled most of the build and debug cycles, and ChatGPT generated the artwork. I originally got the idea because I thought it had never been done before; turned out it had, I tried the existing version, it wasn't great, and that gave me the confidence to build my own take. Next step is rebuilding it in Unity and shipping it as a mobile multiplayer game.",
+    techStack: ['C#', '.NET 8', 'WPF', 'XAML', 'Claude CLI', 'Codex CLI'],
 mediaItems: [
   {
     type: 'video',
@@ -33,14 +34,13 @@ mediaItems: [
       { title: 'Real-time Updates', description: 'Implementing WebSocket connections for live data streaming without overwhelming client resources.' },
       { title: 'Complex Visualizations', description: 'Rendering D3.js visualizations with thousands of data points without frame rate drops.' }
     ],
-    techStack: ['React', 'WebSocket', 'ClickHouse', 'D3.js', 'Node.js', 'TypeScript'],
     nextProject: '002'
   },
   '002': {
-    title: 'Meridian Design System',
+    title: 'Agendi',
     number: '002',
-    overview: 'Enterprise-grade component library spanning 120+ primitives and a living Storybook environment.',
-    description: 'Meridian is a comprehensive design system built to serve three product teams across a large enterprise. It includes 120+ carefully crafted components, a token pipeline for consistent theming, and integrated Figma-to-code workflows.',
+    overview: 'A Canvas dashboard I built because clicking through every class just to find my grade was wasting my time.',
+    description: 'Agendi is a web app I built when I was first learning what ChatGPT could actually do with code. HTML, CSS, and JavaScript on the front, with a small Node server that uses your Canvas API token to pull your schoolwork into one page: current grades, most recent grades, due dates, teacher comments, GPA, all of it. Built specifically for canvas.colum.edu (Columbia College Chicago). It also runs a scheduler that quietly checks deadlines every 15 minutes and fires alerts at 24 hours out, 3 hours out, and overdue — so I stop missing assignments because I forgot to refresh Canvas. Next steps are user profiles, hardening it for safe public use, and then marketing, user testing, and actually growing it.',
     mediaItems: [
       { type: 'video',  src: 'imgs/AgendiRecording.mp4', label: 'Component Library' },
       { type: 'image', src: 'imgs/AgendiSS.png', label: 'Storybook UI' },
@@ -51,7 +51,7 @@ mediaItems: [
       { title: 'Token Pipeline', description: 'Creating an automated system for syncing design tokens between Figma and code.' },
       { title: 'Scalability', description: 'Ensuring the system scales as new components are added without performance degradation.' }
     ],
-    techStack: ['TypeScript', 'Storybook', 'Figma Tokens', 'React', 'CSS-in-JS'],
+    techStack: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'PostgreSQL', 'Canvas API'],
     nextProject: '003'
   },
   '003': {
@@ -91,28 +91,28 @@ mediaItems: [
     nextProject: '005'
   },
   '005': {
-    title: 'Vanta E-Commerce Engine',
+    title: 'Wordle',
     number: '005',
-    overview: 'Conversion-optimized storefront achieving 34% checkout completion uplift.',
-    description: 'Vanta is a high-performance e-commerce platform built with Next.js 14 and React Server Components. Through progressive disclosure patterns and optimized checkout flows, it achieved a 34% increase in checkout completion rates.',
+    overview: 'A Wordle clone I built in Programming 2 — pure HTML, CSS, and JavaScript, no frameworks, no backend.',
+    description: "A browser-based clone of Wordle I built in my Programming 2 class. The goal was simple: stand up a real JavaScript project I could actually deploy and play. You get six guesses to land a random 5-letter word from a ~500-word dictionary, with the usual blue/yellow/gray hints and an on-screen keyboard that colors itself as you go. When the game ends you can copy a spoiler-free emoji grid to share, same as the original. Everything runs from a single `index.html` — no frameworks, no server, no dependencies beyond a Google Font. Next steps would be user profiles, leaderboards, a bigger word list, and additional game modes.",
     mediaItems: [
-      { type: 'video', src: 'imgs/wordlevid.mp4', label: 'Product Catalog' },
-      { type: 'placeholder', label: 'Checkout Flow' },
-      { type: 'placeholder', label: 'Customer Dashboard' }
+      { type: 'video', src: 'imgs/wordlevid.mp4', label: 'Wordle Demo' },
+      { type: 'image', src: 'imgs/wordleW.png', label: 'Wordle Screenshot' },
+      { type: 'placeholder', label: 'Placeholder' }
     ],
     challenges: [
       { title: 'Conversion Rate Optimization', description: 'Reducing friction in the checkout process while maintaining security and compliance.' },
       { title: 'Performance at Scale', description: 'Serving millions of products with sub-500ms page load times.' },
       { title: 'Inventory Integration', description: 'Real-time sync between frontend and Shopify inventory system.' }
     ],
-    techStack: ['Next.js 14', 'Shopify', 'Tailwind CSS', 'React Server Components', 'TypeScript'],
+    techStack: ['HTML', 'CSS', 'JavaScript'],
     nextProject: '006'
   },
   '006': {
-    title: 'Spectrum AI Workbench',
+    title: 'FinBot.AI',
     number: '006',
-    overview: 'Prompt engineering interface and model evaluation harness for series-B AI startup.',
-    description: 'Spectrum provides a collaborative environment for prompt engineering teams to develop, test, and evaluate LLM outputs. Features include side-by-side diff views, custom model adapters, and prompt versioning systems.',
+    overview: 'Drop in a bank statement, get back a categorized breakdown of where your money went.',
+    description: "FinBot.AI is a web app — React on the front, FastAPI on the back — that reads your bank or credit card statements and sorts every transaction into Food, Dining, Transport, Shopping, and so on. You drag in a PDF or CSV, a robot mascot animates while the backend works, and you get back summary cards, category tabs, and a flag on any unusually large charge. The interesting piece is the three-tier categorization pipeline: about 150 popular merchants are hardcoded for instant matches, anything Claude has categorized before is cached locally forever, and only genuinely new merchants get sent to the Claude API. After a couple of uses, almost everything is handled by tiers 1 and 2 — so the AI cost stays near zero. This was V1, and the honest takeaway was the dependency on the Claude API: once I ran out of calls, scalability hit a wall, and the categorization occasionally confused debits and credits. Those limits are exactly why V2 (running locally on Ollama) exists.",
     mediaItems: [
       { type: 'placeholder', label: 'Prompt Editor' },
       { type: 'placeholder', label: 'Model Comparison' },
@@ -123,7 +123,7 @@ mediaItems: [
       { title: 'Collaboration Features', description: 'Enabling team collaboration on prompt development without version conflicts.' },
       { title: 'LLM Integration', description: 'Building adapters for multiple LLM providers with consistent interfaces.' }
     ],
-    techStack: ['React', 'Python', 'LangChain', 'FastAPI', 'TypeScript'],
+    techStack: ['React', 'Vite', 'Tailwind CSS', 'Python', 'FastAPI', 'pdfplumber', 'pandas', 'Claude API'],
     nextProject: '007'
   },
   '007': {
@@ -144,30 +144,30 @@ mediaItems: [
     nextProject: '008'
   },
   '008': {
-    title: 'Project Title',
+    title: 'Bank Parser',
     number: '008',
-    overview: 'Brief overview of the project.',
-    description: 'Add your detailed project description here. Explain the context, goals, and key outcomes of the project.',
+    overview: 'My pride and joy — turn a bank statement PDF into a clean CSV in seconds, entirely on your own machine.',
+    description: 'Bank Parser is the Python tool I started when I was working as a tax prep assistant, manually categorizing transactions and knowing there had to be a faster way. So I dove head first into Python and built it. Drag a PDF onto a local web page (FastAPI + a vanilla JS frontend), the parser uses pdfplumber to read every line, pulls out date / description / amount, and gives you back a preview table and a downloadable CSV. You can also upload multiple statements at once and combine them into one file. No accounts, no cloud, nothing leaves your computer. I leveraged AI to get the prototype standing, then came back to refactor, fix the messy formatting quirks every bank has, and add features. Next steps: more debugging, smarter features, potentially deploying it as an app, real user testing, automating more of the workflow, and tightening security.',
     mediaItems: [
-      { type: 'placeholder', label: 'Project Image 1' },
-      { type: 'placeholder', label: 'Project Image 2' }
+      { type: 'image', src: 'imgs/PtVLogo.png', label: 'Bank Parser Logo' },
+      { type: 'placeholder', label: 'Placeholder' }
     ],
     challenges: [
       { title: 'Challenge 1', description: 'Description of first challenge and how it was solved.' }
     ],
-    techStack: ['Stack', 'Tools'],
+    techStack: ['Python', 'FastAPI', 'pdfplumber', 'pandas', 'HTML', 'CSS', 'JavaScript'],
     nextProject: '009'
   },
   '009': {
-    title: 'Project Title',
+    title: 'Additive Synthesizer',
     number: '009',
-    overview: 'Brief overview of the project.',
-    description: 'Add your detailed project description here. Explain the context, goals, and key outcomes of the project.',
+    overview: "Turn a list of MIDI notes into a real `.wav` file — built from scratch, no DAW required.",
+    description: "I built this one to actually understand how computers make sound, instead of just clicking knobs in a DAW. You give it a list of MIDI notes (0–127, negatives are rests), a tempo in BPM, and an optional timbre — sine, triangle, square, or sawtooth — and it generates a real `.wav` file by stacking sine waves at integer multiples of each note's frequency. That's the \"additive\" in additive synthesis. All the math runs locally in Python via NumPy; there's a Flask web UI with an on-screen piano and presets (Twinkle Twinkle, Ode to Joy, C Major scale) and a CLI version that plays through your speakers directly. No paid APIs, no AI models, no external services — just math turning into sound.",
     mediaItems: [
       { type: 'placeholder', label: 'Project Image 1' }
     ],
     challenges: [],
-    techStack: ['Stack', 'Tools'],
+    techStack: ['Python', 'NumPy', 'Flask', 'soundfile', 'sounddevice', 'HTML', 'JavaScript'],
     nextProject: '010'
   },
   '010': {
