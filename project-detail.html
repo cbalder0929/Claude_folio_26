@@ -26,6 +26,10 @@
        ============================================================ -->
   <nav class="navbar" id="navbar">
     <div class="nav-logo-wrapper">
+      <a href="index.html" class="back-home-btn" aria-label="Back to main site">
+        <span class="back-arrow">&#8592;</span>
+        <span class="back-label">Back</span>
+      </a>
       <a href="index.html#projects" class="nav-logo">
         <img src="imgs/mainLogo.png" alt="Logo" />
       </a>
@@ -78,6 +82,25 @@
 
         <!-- Carousel Indicators -->
         <div class="carousel-indicators" id="carouselIndicators"></div>
+
+        <!-- Navigation to other projects -->
+        <div class="project-navigation">
+          <a id="prevProjectBtn" href="#" class="nav-project-btn nav-project-btn--prev" style="display: none;">
+            <span class="nav-arrow">←</span>
+            <span class="nav-text">
+              <span class="nav-label">Previous Project</span>
+              <span class="nav-title" id="prevProjectTitle"></span>
+            </span>
+          </a>
+
+          <a id="nextProjectBtn" href="#" class="nav-project-btn nav-project-btn--next" style="display: none;">
+            <span class="nav-text">
+              <span class="nav-label">Next Project</span>
+              <span class="nav-title" id="nextProjectTitle"></span>
+            </span>
+            <span class="nav-arrow">→</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -110,24 +133,6 @@
           </div>
         </div>
 
-        <!-- Navigation to other projects -->
-        <div class="project-navigation">
-          <a id="prevProjectBtn" href="#" class="nav-project-btn nav-project-btn--prev" style="display: none;">
-            <span class="nav-arrow">←</span>
-            <span class="nav-text">
-              <span class="nav-label">Previous Project</span>
-              <span class="nav-title" id="prevProjectTitle"></span>
-            </span>
-          </a>
-
-          <a id="nextProjectBtn" href="#" class="nav-project-btn nav-project-btn--next" style="display: none;">
-            <span class="nav-text">
-              <span class="nav-label">Next Project</span>
-              <span class="nav-title" id="nextProjectTitle"></span>
-            </span>
-            <span class="nav-arrow">→</span>
-          </a>
-        </div>
 
       </div>
     </section>

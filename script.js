@@ -57,12 +57,11 @@ function renderParallax() {
     projectsDroplets.style.transform = `translateY(${projRelativeScroll * DROP_SPEED}px)`;
   }
 
-  // Gallery section — parallax relative to its own top edge
+  // Gallery section — same absolute-scrollY formula as hero so the
+  // rain animation is continuous across both sections
   if (gallerySection && galleryBg && galleryDroplets) {
-    const galleryTop            = gallerySection.offsetTop;
-    const galleryRelativeScroll = scrollY - galleryTop;
-    galleryBg.style.transform       = `translateY(${galleryRelativeScroll * BG_SPEED}px)`;
-    galleryDroplets.style.transform = `translateY(${galleryRelativeScroll * DROP_SPEED}px)`;
+    galleryBg.style.transform       = `translateY(${scrollY * BG_SPEED}px)`;
+    galleryDroplets.style.transform = `translateY(${scrollY * DROP_SPEED}px)`;
   }
 
   // Navbar glass effect on scroll
@@ -188,7 +187,6 @@ const translations = {
     navProjects:   'Projects',
     navGallery:    'Gallery',
     navContact:    'Contact',
-    mobileNavHome: 'Home',
     lightMode:     'Light Mode',
     heroEyebrow:   'Visual Intelligence Studio',
     heroTitle1:    'Crafting digital',
@@ -223,7 +221,6 @@ const translations = {
     navProjects:   'Proyectos',
     navGallery:    'Galería',
     navContact:    'Contacto',
-    mobileNavHome: 'Inicio',
     lightMode:     'Modo Claro',
     heroEyebrow:   'Estudio de Inteligencia Visual',
     heroTitle1:    'Creando claridad',
@@ -288,57 +285,3 @@ langBtn.addEventListener('click', () => {
 });
 
 
-/* ============================================================
-   MOBILE BOTTOM NAV — Active Section Tracking
-   Uses IntersectionObserver to highlight the nav item
-   corresponding to the section currently in view.
-   ============================================================ */
-(function () {
-  const mobileNav = document.getElementById('mobileNav');
-  if (!mobileNav) return;
-
-  const navItems = mobileNav.querySelectorAll('.mobile-nav-item');
-  const sectionIds = Array.from(navItems).map(item => item.getAttribute('data-section'));
-
-  // Smooth-scroll for bottom nav links (reuse same pattern as desktop)
-  navItems.forEach(link => {
-    link.addEventListener('click', e => {
-      const target = document.querySelector(link.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-
-  // Set the active class on the correct nav item
-  function setActive(sectionId) {
-    navItems.forEach(item => {
-      if (item.getAttribute('data-section') === sectionId) {
-        item.classList.add('active');
-      } else {
-        item.classList.remove('active');
-      }
-    });
-  }
-
-  // Observe each section — when it enters the viewport, mark it active
-  const observerOptions = {
-    root: null,
-    rootMargin: '-20% 0px -60% 0px',   // Fires when section is near the upper-third
-    threshold: 0
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        setActive(entry.target.id);
-      }
-    });
-  }, observerOptions);
-
-  sectionIds.forEach(id => {
-    const section = document.getElementById(id);
-    if (section) observer.observe(section);
-  });
-})();

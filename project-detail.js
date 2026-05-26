@@ -338,7 +338,7 @@ function setupCarouselMedia(mediaItems) {
       } else if (media.type === 'video') {
         return `
         <div class="carousel-slide" data-index="${index}">
-          <video controls>
+          <video controls autoplay muted playsinline webkit-playsinline loop>
             <source src="${media.src}" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -370,6 +370,10 @@ function setupCarouselMedia(mediaItems) {
 
   // Update carousel position
   updateCarouselPosition();
+
+  // Auto-play the first slide's video if present
+  const firstVideo = carouselTrack.querySelector('.carousel-slide:first-child video');
+  if (firstVideo) firstVideo.play().catch(() => {});
 
   // Show/hide arrows based on item count
   const hasMultipleItems = mediaItems.length > 1;
@@ -438,6 +442,14 @@ function goToSlide(index) {
   currentSlideIndex = index;
   updateCarouselPosition();
   updateIndicators();
+
+  // Pause all videos, then play only the active slide's video
+  carouselTrack.querySelectorAll('video').forEach(v => v.pause());
+  const activeSlide = carouselTrack.querySelector(`.carousel-slide[data-index="${index}"]`);
+  if (activeSlide) {
+    const video = activeSlide.querySelector('video');
+    if (video) video.play().catch(() => {});
+  }
 }
 
 function updateCarouselPosition() {
