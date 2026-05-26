@@ -239,6 +239,7 @@ body {
   filter: none;
   z-index: 0;
   pointer-events: none;
+  contain: strict;
 }
 
 /* ---- LAYER 2: DROPLET GLASS LAYER ---- */
@@ -272,6 +273,7 @@ body {
 
   z-index: 1;
   pointer-events: none;
+  contain: strict;
 }
 
 /* Glass sheen between bg and droplet layer */
@@ -465,6 +467,8 @@ section {
   border-top: 1px solid var(--glass-border);
   border-bottom: 1px solid var(--glass-border);
   padding: 80px 0;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 400px;
 }
 
 .about-strip .section-inner {
@@ -544,6 +548,7 @@ section {
   will-change: transform;
   filter: brightness(0.55) saturate(0.75);
   z-index: 0;
+  contain: strict;
 }
 
 /* ---- PROJECTS DROPLET LAYER ---- */
@@ -686,6 +691,7 @@ section {
     border-color 0.3s;
   overflow: hidden;
   scroll-snap-align: start;
+  contain: layout style paint;
 }
 
 /* Inner glass sheen line at top */
@@ -827,8 +833,6 @@ section {
       transparent 0%,
       rgba(15, 31, 53, 0.65) 40%,
       rgba(15, 31, 53, 0.95) 100%);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
   pointer-events: none;
   transition: opacity 0.55s var(--ease-glass);
   border-radius: 0 0 6px 6px;
@@ -881,6 +885,8 @@ section {
   border-bottom: 1px solid var(--glass-border);
   position: relative;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
 }
 
 /* Gallery background layers stay disabled on desktop; mobile re-enables them */
@@ -888,7 +894,6 @@ section {
   position: absolute;
   inset: -20% 0;
   background: url('imgs/rain_background.jpeg') center center / cover no-repeat;
-  will-change: transform;
   filter: brightness(0.55) saturate(0.75);
   z-index: 0;
   display: none;
@@ -898,7 +903,6 @@ section {
   position: absolute;
   inset: -20% 0;
   background: url('imgs/rain_background.jpeg') center center / cover no-repeat;
-  will-change: transform;
   filter: brightness(0.85) contrast(1.15) saturate(1.1);
   -webkit-mask-image: linear-gradient(to right,
       rgba(0, 0, 0, 0.92) 0%,
@@ -1002,6 +1006,8 @@ footer {
   padding: 64px 0 48px;
   position: relative;
   z-index: 20;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 400px;
 }
 
 .footer-inner {
@@ -1478,6 +1484,31 @@ body.light-mode .nav-logo img {
   50%,
   100% {
     opacity: 0;
+  }
+}
+
+
+/* ============================================================
+   REDUCED MOTION — disable parallax & animations for a11y
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero__bg,
+  .hero__droplets,
+  .gallery__bg,
+  .gallery__droplets,
+  .projects__bg,
+  .projects__droplets {
+    will-change: auto;
+    transform: none !important;
   }
 }
 

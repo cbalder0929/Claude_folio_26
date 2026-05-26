@@ -19,49 +19,47 @@ const gallerySection  = document.getElementById('gallery');
 const navbar          = document.getElementById('navbar');
 
 // Parallax speed coefficients
-// bg moves UP slowly as you scroll; droplets move UP faster.
-// This creates the impression that the "wet glass pane" in front
-// slides upward relative to the still scene outside.
-const BG_SPEED   = 0.25;   // fraction of scroll offset applied to bg
-const DROP_SPEED = 0.55;   // fraction of scroll offset applied to droplets
+const BG_SPEED   = 0.25;
+const DROP_SPEED = 0.55;
 
-let currentScrollY  = 0;
-let targetScrollY   = 0;
-let rafId           = null;
 let ticking         = false;
 
 /**
  * Core parallax render call — runs inside rAF loop.
- * Uses transform: translateY() only — never top/left — to
+ * Uses transform: translate3d() to force GPU compositing and
  * keep rendering on the compositor thread (no layout reflows).
  */
 function renderParallax() {
   const scrollY = window.scrollY;
+  const viewportHeight = window.innerHeight;
 
-  // Hero — background layer: slow upward drift
-  if (heroBg) {
-    heroBg.style.transform = `translateY(${scrollY * BG_SPEED}px)`;
-  }
-
-  // Hero — droplet layer: faster upward drift
-  if (heroDroplets) {
-    heroDroplets.style.transform = `translateY(${scrollY * DROP_SPEED}px)`;
+  // Hero — only compute if hero is in view
+  if (scrollY < viewportHeight * 2) {
+    if (heroBg) {
+      heroBg.style.transform = `translate3d(0,${scrollY * BG_SPEED}px,0)`;
+    }
+    if (heroDroplets) {
+      heroDroplets.style.transform = `translate3d(0,${scrollY * DROP_SPEED}px,0)`;
+    }
   }
 
   // Projects section — parallax relative to its own top edge
-  // so the image looks centred when the section is in view
   if (projectsSection && projectsBg && projectsDroplets) {
     const projTop            = projectsSection.offsetTop;
     const projRelativeScroll = scrollY - projTop;
-    projectsBg.style.transform       = `translateY(${projRelativeScroll * BG_SPEED}px)`;
-    projectsDroplets.style.transform = `translateY(${projRelativeScroll * DROP_SPEED}px)`;
+    if (scrollY > projTop - viewportHeight && scrollY < projTop + projectsSection.offsetHeight) {
+      projectsBg.style.transform       = `translate3d(0,${projRelativeScroll * BG_SPEED}px,0)`;
+      projectsDroplets.style.transform = `translate3d(0,${projRelativeScroll * DROP_SPEED}px,0)`;
+    }
   }
 
-  // Gallery section — same absolute-scrollY formula as hero so the
-  // rain animation is continuous across both sections
+  // Gallery section — only compute when in view
   if (gallerySection && galleryBg && galleryDroplets) {
-    galleryBg.style.transform       = `translateY(${scrollY * BG_SPEED}px)`;
-    galleryDroplets.style.transform = `translateY(${scrollY * DROP_SPEED}px)`;
+    const galTop = gallerySection.offsetTop;
+    if (scrollY > galTop - viewportHeight && scrollY < galTop + gallerySection.offsetHeight) {
+      galleryBg.style.transform       = `translate3d(0,${scrollY * BG_SPEED}px,0)`;
+      galleryDroplets.style.transform = `translate3d(0,${scrollY * DROP_SPEED}px,0)`;
+    }
   }
 
   // Navbar glass effect on scroll
@@ -89,7 +87,7 @@ function onScroll() {
 }
 
 window.addEventListener('scroll', onScroll, { passive: true });
-window.addEventListener('resize', renderParallax);
+window.addEventListener('resize', renderParallax, { passive: true });
 
 // Initial render (no scroll yet)
 renderParallax();
