@@ -883,7 +883,7 @@ section {
   overflow: hidden;
 }
 
-/* Gallery background layers — hidden, section has solid color */
+/* Gallery background layers stay disabled on desktop; mobile re-enables them */
 .gallery__bg {
   position: absolute;
   inset: -20% 0;
@@ -1415,122 +1415,6 @@ body.light-mode .nav-logo img {
   }
 }
 
-/* ============================================================
-   MOBILE BOTTOM NAV — Floating Glass Island
-   Hidden on desktop; shown via media query at ≤ 768px.
-   ============================================================ */
-.mobile-bottom-nav {
-  /* Hidden by default — revealed at ≤ 768px */
-  display: none;
-  position: fixed;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-
-  /* Pill-shaped floating island */
-  width: 90%;
-  max-width: 400px;
-  padding: 8px 12px;
-  border-radius: 999px;
-
-  /* Glass effect */
-  background: rgba(10, 20, 35, 0.72);
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
-  border: 1px solid var(--glass-border);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(78, 179, 232, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-
-  /* Layout */
-  align-items: center;
-  justify-content: space-around;
-  gap: 4px;
-}
-
-/* ---- Individual nav item ---- */
-.mobile-nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  text-decoration: none;
-  color: var(--text-secondary);
-  padding: 8px 12px;
-  border-radius: 16px;
-  min-width: 56px;
-  min-height: 44px;
-  /* Accessibility: ≥ 44px tap target */
-  transition:
-    color 0.3s var(--ease-glass),
-    transform 0.25s var(--ease-glass),
-    background 0.3s var(--ease-glass);
-  position: relative;
-}
-
-.mobile-nav-item svg {
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
-  transition: transform 0.25s var(--ease-glass);
-}
-
-.mobile-nav-item span {
-  font-family: 'Syne', sans-serif;
-  font-size: 0.58rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  line-height: 1;
-}
-
-/* ---- Hover / Tap interaction ---- */
-.mobile-nav-item:hover,
-.mobile-nav-item:active {
-  color: var(--cream);
-  transform: translateY(-3px);
-}
-
-.mobile-nav-item:hover svg,
-.mobile-nav-item:active svg {
-  transform: scale(1.12);
-}
-
-/* ---- Active state — current section ---- */
-.mobile-nav-item.active {
-  color: var(--blue-light);
-  background: rgba(45, 143, 206, 0.12);
-}
-
-/* Glow dot indicator below active icon */
-.mobile-nav-item.active::after {
-  content: '';
-  position: absolute;
-  bottom: 4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--blue-light);
-  box-shadow: 0 0 8px rgba(78, 179, 232, 0.6);
-  animation: navDotPulse 2s ease-in-out infinite;
-}
-
-@keyframes navDotPulse {
-
-  0%,
-  100% {
-    opacity: 0.7;
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
 
 @keyframes footerBubbleReveal {
   from {
@@ -1557,34 +1441,6 @@ body.light-mode .nav-logo img {
   }
 }
 
-/* ---- Light mode overrides ---- */
-body.light-mode .mobile-bottom-nav {
-  background: rgba(232, 224, 208, 0.82);
-  border-color: rgba(15, 31, 53, 0.15);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.12),
-    0 0 0 1px rgba(15, 31, 53, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
-}
-
-body.light-mode .mobile-nav-item {
-  color: rgba(15, 31, 53, 0.55);
-}
-
-body.light-mode .mobile-nav-item:hover,
-body.light-mode .mobile-nav-item:active {
-  color: #0f1f35;
-}
-
-body.light-mode .mobile-nav-item.active {
-  color: #1a5a8a;
-  background: rgba(26, 90, 138, 0.10);
-}
-
-body.light-mode .mobile-nav-item.active::after {
-  background: #1a5a8a;
-  box-shadow: 0 0 8px rgba(26, 90, 138, 0.4);
-}
 
 /* ============================================================
    RESPONSIVE
@@ -1661,13 +1517,13 @@ body.light-mode .mobile-nav-item.active::after {
 /* --- MOBILE LANDSCAPE & SMALL TABLETS --- */
 @media (max-width: 768px) {
 
-  /* Hide desktop nav links on mobile — bottom nav takes over */
-  .nav-links {
-    display: none;
+  /* Prevent 100vw children from creating a horizontal scrollbar when a scrollbar gutter exists */
+  body {
+    overflow-x: clip;
   }
 
-  /* Hide navbar entirely on mobile — bottom nav handles navigation */
-  .navbar {
+  /* Hide desktop nav links on mobile */
+  .nav-links {
     display: none;
   }
 
@@ -1688,9 +1544,22 @@ body.light-mode .mobile-nav-item.active::after {
     gap: 20px;
   }
 
-  /* Extra bottom padding so footer content isn't hidden behind the floating nav */
-  footer {
-    padding-bottom: 100px;
+  .gallery-section {
+    background: transparent;
+  }
+
+  .gallery__bg,
+  .gallery__droplets,
+  .gallery__overlay {
+    display: block;
+  }
+
+  .gallery__bg,
+  .gallery__droplets {
+    top: -100vh;
+    bottom: -100vh;
+    left: 0;
+    right: 0;
   }
 
   .footer-inner {
@@ -1768,16 +1637,12 @@ body.light-mode .mobile-nav-item.active::after {
     animation: blinkCursor 0.8s step-end infinite;
   }
 
-  /* Show mobile bottom nav */
-  .mobile-bottom-nav {
-    display: flex;
-  }
-
   /* Convert gallery grid to a swipeable carousel */
   .gallery-grid {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: 32px;
     gap: 16px;
     padding-bottom: 24px;
     margin: 0 -32px;
@@ -1809,31 +1674,33 @@ body.light-mode .mobile-nav-item.active::after {
     width: 100vw;
     margin-left: 0;
     margin-top: 0;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 80px;
+    padding-bottom: 32px;
   }
 
   .projects-grid {
-    gap: 0;
+    gap: 16px;
     margin: 0;
-    padding: 16px 0;
-    scroll-padding-left: 0;
+    padding: 16px 24px;
+    scroll-padding-inline: 24px;
   }
 
-  /* One card per view — exactly viewport width */
+  /* One card per view — full viewport height, centered in screen */
   .project-card {
-    flex-basis: 100vw;
+    flex-basis: calc(100vw - 48px);
     scroll-snap-align: start;
-    min-height: 80vh;
-    /* Extra horizontal padding so content clears the overlaid arrow buttons */
-    padding-left: 56px;
-    padding-right: 56px;
+    min-height: calc(100vh - 100px);
+    min-height: calc(100dvh - 100px);
+    /* Arrows live in the side gutters, not over the card */
+    padding-left: 24px;
+    padding-right: 24px;
+    align-content: center;
   }
 
   /* Smaller image so card fits on screen */
   .project-card > img,
   .project-card-media {
-    width: min(80%);
+    width: min(80%, 220px);
     margin-bottom: 14px;
   }
 
@@ -1850,11 +1717,11 @@ body.light-mode .mobile-nav-item.active::after {
   }
 
   .project-carousel-btn--prev {
-    left: 6px;
+    left: 2px;
   }
 
   .project-carousel-btn--next {
-    right: 6px;
+    right: 2px;
   }
 
 }
@@ -1871,7 +1738,7 @@ body.light-mode .mobile-nav-item.active::after {
   }
 
   .hero__title {
-    font-size: 2.4rem;
+    font-size: clamp(2rem, 8vw, 2.4rem);
     line-height: 1.1;
   }
 
@@ -1917,8 +1784,7 @@ body.light-mode .mobile-nav-item.active::after {
   }
 
   .project-card {
-    /* Keep extra horizontal padding so arrow buttons don't cover text */
-    padding: 20px 52px;
+    padding: 20px 24px;
   }
 
   .card-title {
@@ -1927,5 +1793,21 @@ body.light-mode .mobile-nav-item.active::after {
 
   .section-label {
     font-size: 0.62rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .project-card {
+    padding-left: 44px;
+    padding-right: 44px;
+  }
+
+  .project-carousel-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .project-carousel-btn span {
+    font-size: 1.8rem;
   }
 }
