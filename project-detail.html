@@ -28,27 +28,27 @@
     <div class="nav-logo-wrapper">
       <a href="index.html" class="back-home-btn" aria-label="Back to main site">
         <span class="back-arrow">&#8592;</span>
-        <span class="back-label">Back</span>
+        <span class="back-label" data-i18n="backLabel">Back</span>
       </a>
       <a href="index.html#projects" class="nav-logo">
         <img src="imgs/mainLogo.png" alt="Logo" />
       </a>
       <div class="logo-controls">
         <button class="ctrl-btn" id="lightModeBtn">
-          <span class="ctrl-icon">☀</span>
-          <span>Light Mode</span>
+          <span class="ctrl-icon">&#9728;</span>
+          <span data-i18n="lightMode">Light Mode</span>
         </button>
         <button class="ctrl-btn" id="langBtn">
-          <span class="ctrl-icon">🌐</span>
+          <span class="ctrl-icon">&#127760;</span>
           <span id="langLabel">Español</span>
         </button>
       </div>
     </div>
     <ul class="nav-links">
-      <li><a href="index.html#projects">Projects</a></li>
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#gallery">Gallery</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="index.html#projects" data-i18n="navProjects">Projects</a></li>
+      <li><a href="index.html#about" data-i18n="navAbout">About</a></li>
+      <li><a href="index.html#gallery" data-i18n="navGallery">Gallery</a></li>
+      <li><a href="index.html#contact" data-i18n="navContact">Contact</a></li>
     </ul>
   </nav>
 
@@ -59,6 +59,7 @@
 
     <!-- Media Carousel Section -->
     <section class="project-hero">
+      <div class="project-hero__bg" aria-hidden="true"></div>
       <div class="carousel-container">
         <div class="carousel-wrapper">
           <div class="carousel-track" id="carouselTrack">
@@ -88,14 +89,14 @@
           <a id="prevProjectBtn" href="#" class="nav-project-btn nav-project-btn--prev" style="display: none;">
             <span class="nav-arrow">←</span>
             <span class="nav-text">
-              <span class="nav-label">Previous Project</span>
+              <span class="nav-label" data-i18n="prevProjectLabel">Previous Project</span>
               <span class="nav-title" id="prevProjectTitle"></span>
             </span>
           </a>
 
           <a id="nextProjectBtn" href="#" class="nav-project-btn nav-project-btn--next" style="display: none;">
             <span class="nav-text">
-              <span class="nav-label">Next Project</span>
+              <span class="nav-label" data-i18n="nextProjectLabel">Next Project</span>
               <span class="nav-title" id="nextProjectTitle"></span>
             </span>
             <span class="nav-arrow">→</span>
@@ -119,7 +120,7 @@
 
         <!-- Project Description -->
         <div class="project-description">
-          <h2 class="section-subtitle">Project Overview</h2>
+          <h2 class="section-subtitle" data-i18n="projectOverviewLabel">Project Overview</h2>
           <div class="description-content" id="projectDescription">
             <p>Project description will be populated here based on the selected project ID.</p>
           </div>
@@ -127,7 +128,7 @@
 
         <!-- Tech Stack / Tags Section -->
         <div class="project-tech-stack">
-          <h2 class="section-subtitle">Tech Stack</h2>
+          <h2 class="section-subtitle" data-i18n="techStackLabel">Tech Stack</h2>
           <div class="tech-stack-items" id="projectTechStack">
             <!-- Tech tags populated by JavaScript -->
           </div>
@@ -140,8 +141,8 @@
   </main>
 
   <!-- Scripts -->
+  <script src="shared-ui.js"></script>
   <script src="project-detail.js"></script>
-
 </body>
 
 </html>

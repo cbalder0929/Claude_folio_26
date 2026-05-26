@@ -318,6 +318,11 @@ function loadProject(projectId) {
 
   // Scroll to top
   window.scrollTo(0, 0);
+
+  // Re-apply current language so any data-i18n elements stay translated
+  if (typeof applyLanguage === 'function') {
+    applyLanguage(currentLang);
+  }
 }
 
 // ============================================================

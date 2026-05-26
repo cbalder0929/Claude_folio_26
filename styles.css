@@ -156,7 +156,7 @@ body {
 .logo-controls {
   position: absolute;
   top: calc(100% + 2px);
-  right: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -203,7 +203,7 @@ body {
 .ctrl-btn:hover {
   border-color: var(--blue-light);
   color: var(--blue-light);
-  transform: translateX(-3px);
+  transform: translateX(3px);
 }
 
 .ctrl-btn .ctrl-icon {
@@ -1008,21 +1008,20 @@ footer {
   max-width: var(--content-max);
   margin: 0 auto;
   padding: 0 32px;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
 }
 
 .footer-contact-panel {
-  width: min(100%, 720px);
-  padding: 36px;
-  background:
-    linear-gradient(135deg, rgba(78, 179, 232, 0.08), rgba(78, 179, 232, 0.02)),
-    rgba(15, 31, 53, 0.42);
-  border: 1px solid var(--glass-border);
-  border-radius: 18px;
-  backdrop-filter: blur(16px) saturate(135%);
-  -webkit-backdrop-filter: blur(16px) saturate(135%);
-  box-shadow: var(--glass-shadow);
+  display: contents;
+}
+
+.footer-contact-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .footer-kicker {
@@ -1046,26 +1045,34 @@ footer {
 .footer-contact-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .footer-contact-item {
-  display: flex;
+  display: grid;
+  grid-template-columns: 32px auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 18px 20px;
-  border: 1px solid rgba(78, 179, 232, 0.14);
-  border-radius: 14px;
+  gap: 16px;
+  padding: 16px 20px;
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.03);
+  color: var(--text-primary);
   text-decoration: none;
-  transition: border-color 0.25s, transform 0.25s, background 0.25s;
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
 }
 
 .footer-contact-item:hover {
-  border-color: rgba(78, 179, 232, 0.34);
+  border-color: var(--blue-light);
   background: rgba(78, 179, 232, 0.08);
   transform: translateY(-2px);
+}
+
+.footer-contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue-light);
 }
 
 .footer-contact-label {
@@ -1328,6 +1335,20 @@ body.light-mode .gallery__droplets {
   filter: brightness(1.05) contrast(1.1) saturate(1.05);
 }
 
+body.light-mode .gallery-section {
+  background: #e8dfcc;
+  border-top-color: rgba(15, 31, 53, 0.12);
+  border-bottom-color: rgba(15, 31, 53, 0.12);
+}
+
+body.light-mode .gallery-section .section-label {
+  color: #1a5a8a;
+}
+
+body.light-mode .gallery-section .section-title {
+  color: #0f1f35;
+}
+
 body.light-mode .gallery-item-title {
   color: #0f1f35;
 }
@@ -1338,8 +1359,39 @@ body.light-mode .gallery-item-desc {
 
 /* Footer */
 body.light-mode footer {
-  background: #d8d0c0;
-  border-top-color: rgba(15, 31, 53, 0.15);
+  background: linear-gradient(180deg, #f1ead6 0%, #e8dfcc 100%);
+  border-top: 1px solid rgba(15, 31, 53, 0.12);
+}
+
+body.light-mode .footer-kicker {
+  color: #1a5a8a;
+}
+
+body.light-mode .footer-title {
+  color: #0f1f35;
+}
+
+body.light-mode .footer-contact-item {
+  background: rgba(255, 255, 255, 0.65);
+  border-color: rgba(15, 31, 53, 0.12);
+  color: #0f1f35;
+}
+
+body.light-mode .footer-contact-item:hover {
+  background: rgba(45, 143, 206, 0.10);
+  border-color: #2d8fce;
+}
+
+body.light-mode .footer-contact-icon {
+  color: #1a5a8a;
+}
+
+body.light-mode .footer-contact-label {
+  color: #1a5a8a;
+}
+
+body.light-mode .footer-contact-value {
+  color: #0f1f35;
 }
 
 body.light-mode .footer-bubble-mobile {
@@ -1350,18 +1402,6 @@ body.light-mode .footer-bubble-mobile {
 
 body.light-mode .footer-bubble-mobile::after {
   border-color: transparent transparent rgba(255, 255, 255, 0.96) transparent;
-}
-
-body.light-mode .footer-links h4 {
-  color: #1a5a8a;
-}
-
-body.light-mode .footer-links a {
-  color: rgba(15, 31, 53, 0.60);
-}
-
-body.light-mode .footer-links a:hover {
-  color: #0f1f35;
 }
 
 body.light-mode .footer-bottom {
@@ -1563,26 +1603,8 @@ body.light-mode .nav-logo img {
   }
 
   .footer-inner {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 88px 24px;
-  }
-
-  .footer-brand {
-    flex: 1 1 100%;
-    display: flex;
-    justify-content: flex-start;
-    min-height: 132px;
-  }
-
-  .footer-links {
-    flex: 1 1 calc(50% - 12px);
-    min-width: 0;
-  }
-
-  .footer-links h4,
-  .footer-links ul {
-    text-align: center;
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   .footer-bubble-mobile {
