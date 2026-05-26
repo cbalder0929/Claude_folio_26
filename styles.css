@@ -1689,8 +1689,8 @@ body.light-mode .nav-logo img {
   .project-card {
     flex-basis: calc(100vw - 48px);
     scroll-snap-align: start;
-    min-height: calc(100vh - 100px);
-    min-height: calc(100dvh - 100px);
+    min-height: calc(100vh - 150px);
+    min-height: calc(100dvh - 150px);
     /* Arrows live in the side gutters, not over the card */
     padding-left: 24px;
     padding-right: 24px;
