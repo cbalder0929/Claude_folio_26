@@ -8,6 +8,9 @@
 
   <link rel="icon" type="image/png" href="imgs/mainLogo.png" />
 
+  <!-- Preload critical hero background image -->
+  <link rel="preload" as="image" href="imgs/rain_background.jpeg" fetchpriority="high" />
+
   <!-- Distinctive font pairing: Cormorant for display, Syne for UI -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -80,7 +83,7 @@
 
           <article class="project-card">
             <p class="card-number">001</p>
-            <img src="imgs/LogoPerron.png" alt="Gallo Showdown preview" />
+            <img src="imgs/LogoPerron.png" alt="Gallo Showdown preview" loading="lazy" />
             <h3 class="card-title" data-i18n="card001Title">GalloShowdown</h3>
             <p class="card-desc" data-i18n="card001Desc">
               A C# and WPF rooster-fighting game where you raise a single gallo from a gift on your 10th birthday into a tournament champion. Six breeds, breeding, training, a shop, and Street Fighter–style 1v1 battles.
@@ -90,7 +93,7 @@
 
           <article class="project-card">
             <p class="card-number">002</p>
-              <img src="imgs/AgendiLogo.png" alt="Agenda App preview" />
+              <img src="imgs/AgendiLogo.png" alt="Agenda App preview" loading="lazy" />
             <h3 class="card-title" data-i18n="card002Title">Agendi</h3>
             <p class="card-desc" data-i18n="card002Desc">
               A Canvas dashboard I built because I was tired of clicking through every class just to see my grades. One page, one list, sorted by what's due — plus live GPA, professor comments, and deadline alerts.
@@ -100,7 +103,7 @@
 
           <article class="project-card">
             <p class="card-number">003</p>
-              <img src="imgs/CheesLogo.png" alt="Chess Practice preview" />
+              <img src="imgs/CheesLogo.png" alt="Chess Practice preview" loading="lazy" />
             <h3 class="card-title" data-i18n="card003Title">NextMove</h3>
             <p class="card-desc" data-i18n="card003Desc">
 Chess Game is a two-player PvP chess application built with C# and XAML, featuring a functional chessboard, piece movement logic, and turn-based gameplay.            </p>
@@ -109,7 +112,7 @@ Chess Game is a two-player PvP chess application built with C# and XAML, featuri
 
           <article class="project-card">
             <p class="card-number">004</p>
-                          <img src="imgs/CraftWorldLogo.png" alt="Craft World preview" />
+                          <img src="imgs/CraftWorldLogo.png" alt="Craft World preview" loading="lazy" />
 
             <h3 class="card-title" data-i18n="card004Title">Craft World</h3>
             <p class="card-desc" data-i18n="card004Desc">
@@ -121,7 +124,7 @@ Chess Game is a two-player PvP chess application built with C# and XAML, featuri
 
           <article class="project-card">
             <p class="card-number">005</p>
-            <img src="imgs/wordleW.png" alt="Wordle preview" />
+            <img src="imgs/wordleW.png" alt="Wordle preview" loading="lazy" />
             <h3 class="card-title" data-i18n="card005Title">Wordle</h3>
             <p class="card-desc" data-i18n="card005Desc">
               A browser-based Wordle clone built in Programming 2 with plain HTML, CSS, and JavaScript. 500-word dictionary, color-coded hints, win/loss tracking, and a share grid — no frameworks, no backend.
@@ -152,7 +155,7 @@ Chess Game is a two-player PvP chess application built with C# and XAML, featuri
 
           <article class="project-card">
             <p class="card-number">008</p>
-            <img src="imgs/PtVLogo.png" alt="Bank Parser preview" />
+            <img src="imgs/PtVLogo.png" alt="Bank Parser preview" loading="lazy" />
             <h3 class="card-title" data-i18n="card008Title">Bank Parser</h3>
             <p class="card-desc" data-i18n="card008Desc">
               My pride and joy. A Python tool I started when I was prepping taxes by hand and knew there had to be a faster way. Drop in a bank statement PDF, get back a clean, downloadable CSV — runs entirely on your machine.
@@ -374,8 +377,8 @@ Chess Game is a two-player PvP chess application built with C# and XAML, featuri
     </div>
   </footer>
 
-  <script src="shared-ui.js"></script>
-  <script src="script.js"></script>
+  <script src="shared-ui.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 
 </html>
