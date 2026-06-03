@@ -343,7 +343,7 @@ function setupCarouselMedia(mediaItems) {
       } else if (media.type === 'video') {
         return `
         <div class="carousel-slide" data-index="${index}">
-          <video controls autoplay muted playsinline webkit-playsinline loop>
+          <video controls muted playsinline webkit-playsinline loop preload="none">
             <source src="${media.src}" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
