@@ -43,7 +43,7 @@ mediaItems: [
     description: 'Agendi is a web app I built when I was first learning what ChatGPT could actually do with code. HTML, CSS, and JavaScript on the front, with a small Node server that uses your Canvas API token to pull your schoolwork into one page: current grades, most recent grades, due dates, teacher comments, GPA, all of it. Built specifically for canvas.colum.edu (Columbia College Chicago). It also runs a scheduler that quietly checks deadlines every 15 minutes and fires alerts at 24 hours out, 3 hours out, and overdue — so I stop missing assignments because I forgot to refresh Canvas. Next steps are user profiles, hardening it for safe public use, and then marketing, user testing, and actually growing it.',
     mediaItems: [
       { type: 'video',  src: 'imgs/AgendiRecording.mp4', label: 'Component Library' },
-      { type: 'image', src: 'imgs/AgendiSS.png', label: 'Storybook UI' },
+      { type: 'image', src: 'imgs/AgendiSS.webp', label: 'Storybook UI' },
       { type: 'placeholder', label: 'Token System' }
     ],
     challenges: [
@@ -97,7 +97,7 @@ mediaItems: [
     description: "A browser-based clone of Wordle I built in my Programming 2 class. The goal was simple: stand up a real JavaScript project I could actually deploy and play. You get six guesses to land a random 5-letter word from a ~500-word dictionary, with the usual blue/yellow/gray hints and an on-screen keyboard that colors itself as you go. When the game ends you can copy a spoiler-free emoji grid to share, same as the original. Everything runs from a single `index.html` — no frameworks, no server, no dependencies beyond a Google Font. Next steps would be user profiles, leaderboards, a bigger word list, and additional game modes.",
     mediaItems: [
       { type: 'video', src: 'imgs/wordlevid.mp4', label: 'Wordle Demo' },
-      { type: 'image', src: 'imgs/wordleW.png', label: 'Wordle Screenshot' },
+      { type: 'image', src: 'imgs/wordleW.webp', label: 'Wordle Screenshot' },
       { type: 'placeholder', label: 'Placeholder' }
     ],
     challenges: [
