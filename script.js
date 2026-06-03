@@ -137,6 +137,43 @@ renderParallax();
 })();
 
 
+/* ============================================================
+   GALLERY CAROUSEL
+   ============================================================ */
+(function () {
+  const track   = document.getElementById('galleryTrack');
+  const prevBtn = document.querySelector('[data-gallery-prev]');
+  const nextBtn = document.querySelector('[data-gallery-next]');
+
+  if (!track || !prevBtn || !nextBtn) return;
+
+  function getStepSize() {
+    const firstItem = track.querySelector('.gallery-item');
+    if (!firstItem) return track.clientWidth;
+    const styles = window.getComputedStyle(track);
+    const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+    return (firstItem.getBoundingClientRect().width + gap) * 3;
+  }
+
+  function updateButtons() {
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    prevBtn.disabled = track.scrollLeft <= 1;
+    nextBtn.disabled = track.scrollLeft >= maxScroll - 1 || maxScroll <= 0;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    track.scrollBy({ left: -getStepSize(), behavior: 'smooth' });
+  });
+  nextBtn.addEventListener('click', () => {
+    track.scrollBy({ left: getStepSize(), behavior: 'smooth' });
+  });
+  track.addEventListener('scroll', updateButtons, { passive: true });
+  window.addEventListener('resize', updateButtons);
+
+  updateButtons();
+})();
+
+
 /**
  * SMOOTH ANCHOR SCROLL
  * Intercepts hash links for a controlled scroll experience.

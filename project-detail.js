@@ -60,7 +60,7 @@ mediaItems: [
     overview: 'Headless CMS front-end with inline editing and multi-locale support.',
     description: 'Orbit provides a modern interface for managing content across a global company with support for multiple languages and regions. Features include inline WYSIWYG editing, structured text rendering, and a custom GraphQL layer for efficient content delivery.',
     mediaItems: [
-      { type: 'placeholder', label: 'Editor Interface' },
+      { type: 'video', src: 'imgs/ChessVid.mp4', label: 'Editor Interface' },
       { type: 'placeholder', label: 'Multi-locale Support' },
       { type: 'placeholder', label: 'Admin Dashboard' }
     ],
@@ -78,7 +78,7 @@ mediaItems: [
     overview: 'Accessible HIPAA-aligned patient vitals interface with configurable alert thresholds.',
     description: 'Pulse is a healthcare dashboard providing real-time patient monitoring for clinical settings. Fully HIPAA compliant, it integrates with HL7 FHIR data streams and includes customizable alert thresholds for different patient conditions.',
     mediaItems: [
-      { type: 'placeholder', label: 'Patient Dashboard' },
+      { type: 'video', src: 'imgs/craftworldvid.mp4', label: 'Craftworld Video' },
       { type: 'placeholder', label: 'Vitals Monitoring' },
       { type: 'placeholder', label: 'Alert Configuration' }
     ],

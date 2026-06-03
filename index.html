@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Claude_Portfolio</title>
+  <title>charlesbalderas.com</title>
 
   <link rel="icon" type="image/png" href="imgs/mainLogo.png" />
 
@@ -253,12 +253,13 @@ Chess Game is a two-player PvP chess application built with C# and XAML, featuri
           <span data-i18n="aboutTitle">Who is Charles?</span>
         </h2>
         <p data-i18n="aboutP1">
-          I'm a Computer Programming student at Columbia College Chicago with experience in sales, business operations,
-          and software development.
+          I am a Chicago native currently studying Computer Programming at Columbia College Chicago. My passion for technology comes from enjoying the process of building software and solving problems through code. Throughout my studies, I have developed skills in programming, web development, and technology solutions while continuing to explore new areas of software development.
         </p>
         <p data-i18n="aboutP2">
-          I've worked in tax preparation, where I handled client communication, Excel systems, QuickBooks, and business
-          filings, and I currently work in sales where I focus on communication, problem-solving, and closing.
+          Alongside my education, I work as a bilingual Sales Consultant at Xfinity, where I help customers find solutions that fit their needs. I also do freelance work assisting small businesses in becoming more technologically and financially literate by helping them adopt software tools, improve their digital workflows, and better understand their business data.
+        </p>
+        <p data-i18n="aboutP3">
+          I enjoy using both my technical and communication skills to help people and businesses grow while continuing to expand my own knowledge in the technology field.
         </p>
       </div>
 
@@ -281,43 +282,139 @@ Chess Game is a two-player PvP chess application built with C# and XAML, featuri
         <h2 class="section-title" data-i18n="galleryTitle">Gallery</h2>
       </div>
 
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <div class="gallery-image" style="background: linear-gradient(135deg, #2d8fce 0%, #4eb3e8 100%);"></div>
-          <h3 class="gallery-item-title" data-i18n="gallery1Title">Design System Components</h3>
-          <p class="gallery-item-desc" data-i18n="gallery1Desc">Comprehensive UI component library</p>
-        </div>
+      <div class="gallery-carousel-wrapper">
+        <button class="project-carousel-btn project-carousel-btn--prev" type="button" aria-label="Previous photos" data-gallery-prev>
+          <span aria-hidden="true">&#8249;</span>
+        </button>
 
-        <div class="gallery-item">
-          <div class="gallery-image" style="background: linear-gradient(135deg, #1a5a8a 0%, #2d8fce 100%);"></div>
-          <h3 class="gallery-item-title" data-i18n="gallery2Title">Dashboard Interface</h3>
-          <p class="gallery-item-desc" data-i18n="gallery2Desc">Real-time analytics visualization</p>
-        </div>
+        <div class="gallery-track" id="galleryTrack">
 
-        <div class="gallery-item">
-          <div class="gallery-image" style="background: linear-gradient(135deg, #162840 0%, #1a5a8a 100%);"></div>
-          <h3 class="gallery-item-title" data-i18n="gallery3Title">Mobile Experience</h3>
-          <p class="gallery-item-desc" data-i18n="gallery3Desc">Responsive interface design</p>
-        </div>
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img src="PhotosFolder/converted/IMG_2084.jpg" alt="Chicago skyline viewed from the lakefront" loading="lazy" />
+            </div>
+            <h3 class="gallery-item-title" data-i18n="gallery1Title">Chicago Skyline</h3>
+            <p class="gallery-item-desc" data-i18n="gallery1Desc">The city from the lakefront — Willis Tower cuts through the clouds on a moody afternoon.</p>
+          </div>
 
-        <div class="gallery-item">
-          <div class="gallery-image" style="background: linear-gradient(135deg, #4eb3e8 0%, #7dd3ff 100%);"></div>
-          <h3 class="gallery-item-title" data-i18n="gallery4Title">Data Visualization</h3>
-          <p class="gallery-item-desc" data-i18n="gallery4Desc">Interactive chart systems</p>
-        </div>
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img src="PhotosFolder/converted/IMG_2244.jpg" alt="Cermak-Chinatown CTA L train platform" loading="lazy" />
+            </div>
+            <h3 class="gallery-item-title" data-i18n="gallery2Title">Cermak–Chinatown L</h3>
+            <p class="gallery-item-desc" data-i18n="gallery2Desc">The Red Line platform stretches south as the Chicago skyline rises to the north.</p>
+          </div>
 
-        <div class="gallery-item">
-          <div class="gallery-image" style="background: linear-gradient(135deg, #0f1f35 0%, #162840 100%);"></div>
-          <h3 class="gallery-item-title" data-i18n="gallery5Title">Brand Guidelines</h3>
-          <p class="gallery-item-desc" data-i18n="gallery5Desc">Cohesive visual language</p>
-        </div>
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img src="PhotosFolder/converted/IMG_2460.jpg" alt="Large street art mural on a Chicago building" loading="lazy" />
+            </div>
+            <h3 class="gallery-item-title" data-i18n="gallery3Title">Chicago Street Art</h3>
+            <p class="gallery-item-desc" data-i18n="gallery3Desc">A massive mural of a decorative creature surrounded by tropical foliage, painted across an entire building face.</p>
+          </div>
 
-        <div class="gallery-item">
-          <div class="gallery-image" style="background: linear-gradient(135deg, #2d8fce 0%, #1a5a8a 100%);"></div>
-          <h3 class="gallery-item-title" data-i18n="gallery6Title">Typography Specimens</h3>
-          <p class="gallery-item-desc" data-i18n="gallery6Desc">Typeface showcase &amp; pairing</p>
-        </div>
-      </div>
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img src="PhotosFolder/IMG_2398.JPG" alt="Friends gathered around a backyard campfire at night" loading="lazy" />
+            </div>
+            <h3 class="gallery-item-title" data-i18n="gallery4Title">Backyard Fire</h3>
+            <p class="gallery-item-desc" data-i18n="gallery4Desc">Late-night fire pit with friends — the kind of night that turns into a good story.</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img src="PhotosFolder/converted/IMG_2448.jpg" alt="Brindle dog relaxing in a sunny yard" loading="lazy" />
+            </div>
+            <h3 class="gallery-item-title" data-i18n="gallery5Title">Sunny Afternoon</h3>
+            <p class="gallery-item-desc" data-i18n="gallery5Desc">A brindle pup soaking up the sun by the woodpile on a quiet summer afternoon.</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img src="PhotosFolder/converted/IMG_2279.jpg" alt="Selfie with Willis Tower visible through a window" loading="lazy" />
+            </div>
+            <h3 class="gallery-item-title" data-i18n="gallery6Title">Willis Tower Views</h3>
+            <p class="gallery-item-desc" data-i18n="gallery6Desc">Peace sign from the upper floors — the kind of city view that never gets old.</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img src="PhotosFolder/converted/IMG_2089.jpg" alt="Chicago Water Tower on Michigan Avenue" loading="lazy" />
+            </div>
+            <h3 class="gallery-item-title" data-i18n="gallery7Title">The Water Tower</h3>
+            <p class="gallery-item-desc" data-i18n="gallery7Desc">One of the few structures to survive the Great Chicago Fire, still standing watch on the Magnificent Mile.</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img src="PhotosFolder/converted/IMG_2195.jpg" alt="Chicago street view with Willis Tower and a mural" loading="lazy" />
+            </div>
+            <h3 class="gallery-item-title" data-i18n="gallery8Title">Street Level</h3>
+            <p class="gallery-item-desc" data-i18n="gallery8Desc">Willis Tower looms over the intersection while a vibrant mural adds color to the corner.</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img src="PhotosFolder/IMG_2221.PNG" alt="Japanese woodblock-style art of a snow leopard and black panther" loading="lazy" />
+            </div>
+            <h3 class="gallery-item-title" data-i18n="gallery9Title">Ukiyo-e Clash</h3>
+            <p class="gallery-item-desc" data-i18n="gallery9Desc">A woodblock-style print of a snow leopard and black panther locked in battle on a deep blue background.</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img src="PhotosFolder/converted/IMG_2230.jpg" alt="Mirror selfie in a gym with dumbbells in the foreground" loading="lazy" />
+            </div>
+            <h3 class="gallery-item-title" data-i18n="gallery10Title">Gym Days</h3>
+            <p class="gallery-item-desc" data-i18n="gallery10Desc">Mirror selfie at the weight room — staying consistent.</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img src="PhotosFolder/converted/IMG_2383.jpg" alt="CTA subway security screen showing two people smiling" loading="lazy" />
+            </div>
+            <h3 class="gallery-item-title" data-i18n="gallery11Title">Caught on Camera</h3>
+            <p class="gallery-item-desc" data-i18n="gallery11Desc">The CTA security feed caught us on the Brown Line — smiling for the screen.</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img src="PhotosFolder/converted/IMG_2390.jpg" alt="Chicago Michigan Avenue with a yellow convertible in traffic" loading="lazy" />
+            </div>
+            <h3 class="gallery-item-title" data-i18n="gallery12Title">Michigan Avenue</h3>
+            <p class="gallery-item-desc" data-i18n="gallery12Desc">A yellow convertible heads down Michigan Ave on a green-light afternoon in the city.</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img src="PhotosFolder/converted/IMG_2401.jpg" alt="Charles holding an iPad box at the Xfinity store" loading="lazy" />
+            </div>
+            <h3 class="gallery-item-title" data-i18n="gallery13Title">On the Clock</h3>
+            <p class="gallery-item-desc" data-i18n="gallery13Desc">Working the floor at Xfinity — iPad boxes stacked and ready to go.</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img src="PhotosFolder/IMG_1943.PNG" alt="Charles in a Comcast jacket in front of the Comcast logo" loading="lazy" />
+            </div>
+            <h3 class="gallery-item-title" data-i18n="gallery14Title">Comcast Days</h3>
+            <p class="gallery-item-desc" data-i18n="gallery14Desc">On site at Comcast — the first chapter of a career in telecom.</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-image">
+              <img src="PhotosFolder/F8843B34-9806-44A0-9B75-6A46EB564317.png" alt="Portrait photo in front of a bookshelf" loading="lazy" />
+            </div>
+            <h3 class="gallery-item-title" data-i18n="gallery15Title">Portrait</h3>
+            <p class="gallery-item-desc" data-i18n="gallery15Desc">A quiet afternoon between the stacks — glasses on, good vibes only.</p>
+          </div>
+
+        </div><!-- /gallery-track -->
+
+        <button class="project-carousel-btn project-carousel-btn--next" type="button" aria-label="Next photos" data-gallery-next>
+          <span aria-hidden="true">&#8250;</span>
+        </button>
+      </div><!-- /gallery-carousel-wrapper -->
     </div>
   </section>
 
