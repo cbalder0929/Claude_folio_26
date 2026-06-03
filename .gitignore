@@ -1,5 +1,4 @@
 node_modules/
-PhotosFolder/
 *.log
 .DS_Store
 Thumbs.db
