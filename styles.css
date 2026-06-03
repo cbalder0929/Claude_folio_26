@@ -882,8 +882,6 @@ section {
   border-bottom: 1px solid var(--glass-border);
   position: relative;
   overflow: hidden;
-  content-visibility: auto;
-  contain-intrinsic-size: auto 800px;
 }
 
 /* Gallery background layers stay disabled on desktop; mobile re-enables them */
@@ -963,6 +961,7 @@ section {
   transition: transform 0.38s var(--ease-glass), box-shadow 0.38s var(--ease-glass);
   cursor: pointer;
   flex: 0 0 calc((100% - 40px) / 3);
+  min-width: 0;
   scroll-snap-align: start;
 }
 
