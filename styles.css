@@ -949,6 +949,7 @@ section {
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding: 16px 2px 24px;
+  width: 100%;
 }
 
 .gallery-track::-webkit-scrollbar {
@@ -1696,8 +1697,13 @@ body.light-mode .nav-logo img {
     animation: blinkCursor 0.8s step-end infinite;
   }
 
+  .gallery-carousel-wrapper {
+    overflow: hidden;
+  }
+
   .gallery-item {
     flex: 0 0 85%;
+    max-width: 85%;
     scroll-snap-align: center;
   }
 
