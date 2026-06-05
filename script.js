@@ -24,6 +24,22 @@ const DROP_SPEED = 0.55;
 
 let ticking         = false;
 
+function applyParallaxSection(section, bgLayer, dropletLayer, scrollY, viewportHeight) {
+  if (!section) return;
+
+  const sectionTop = section.offsetTop;
+  const relativeScroll = scrollY - sectionTop;
+
+  if (scrollY > sectionTop - viewportHeight && scrollY < sectionTop + section.offsetHeight) {
+    if (bgLayer) {
+      bgLayer.style.transform = `translate3d(0,${relativeScroll * BG_SPEED}px,0)`;
+    }
+    if (dropletLayer) {
+      dropletLayer.style.transform = `translate3d(0,${relativeScroll * DROP_SPEED}px,0)`;
+    }
+  }
+}
+
 /**
  * Core parallax render call — runs inside rAF loop.
  * Uses transform: translate3d() to force GPU compositing and
@@ -35,32 +51,14 @@ function renderParallax() {
 
   // Hero — only compute if hero is in view
   if (scrollY < viewportHeight * 2) {
-    if (heroBg) {
-      heroBg.style.transform = `translate3d(0,${scrollY * BG_SPEED}px,0)`;
-    }
-    if (heroDroplets) {
-      heroDroplets.style.transform = `translate3d(0,${scrollY * DROP_SPEED}px,0)`;
-    }
+    applyParallaxSection(document.body, heroBg, heroDroplets, scrollY, viewportHeight);
   }
 
   // Projects section — parallax relative to its own top edge
-  if (projectsSection && projectsBg && projectsDroplets) {
-    const projTop            = projectsSection.offsetTop;
-    const projRelativeScroll = scrollY - projTop;
-    if (scrollY > projTop - viewportHeight && scrollY < projTop + projectsSection.offsetHeight) {
-      projectsBg.style.transform       = `translate3d(0,${projRelativeScroll * BG_SPEED}px,0)`;
-      projectsDroplets.style.transform = `translate3d(0,${projRelativeScroll * DROP_SPEED}px,0)`;
-    }
-  }
+  applyParallaxSection(projectsSection, projectsBg, projectsDroplets, scrollY, viewportHeight);
 
   // Gallery section — only compute when in view
-  if (gallerySection && galleryBg && galleryDroplets) {
-    const galTop = gallerySection.offsetTop;
-    if (scrollY > galTop - viewportHeight && scrollY < galTop + gallerySection.offsetHeight) {
-      galleryBg.style.transform       = `translate3d(0,${scrollY * BG_SPEED}px,0)`;
-      galleryDroplets.style.transform = `translate3d(0,${scrollY * DROP_SPEED}px,0)`;
-    }
-  }
+  applyParallaxSection(gallerySection, galleryBg, galleryDroplets, scrollY, viewportHeight);
 
   // Navbar glass effect on scroll
   if (navbar) {

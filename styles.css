@@ -878,7 +878,6 @@ section {
 .gallery-section {
   position: relative;
   width: 100%;
-  padding: 120px 0 80px;
   overflow: hidden;
 }
 
@@ -926,9 +925,11 @@ section {
   pointer-events: none;
 }
 
-.gallery-section .section-inner {
+.gallery-section > .section-inner {
   position: relative;
   z-index: 10;
+  padding-top: 120px;
+  padding-bottom: 80px;
 }
 
 .gallery-header {
