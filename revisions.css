@@ -1,0 +1,32 @@
+/* ============================================================
+   REVISIONS — spacing fixes (overrides styles.css)
+   Loaded after styles.css; rules here win on equal specificity.
+   ============================================================ */
+
+/* 1. Enlarge three project-card logos that read small in the shared square.
+   src$= (ends-with) is robust to path changes. Specificity (0,2,1) beats the
+   base .project-card>img rule, and this file loads later. */
+.project-card > img[src$="rouletteLogo.png"],
+.project-card > img[src$="shark.png"],
+.project-card > img[src$="doodleAI.png"] {
+  width: min(94%, 258px);   /* ~17% larger than the 80%/220px default */
+}
+
+/* 2. Reduce the gallery section's empty vertical space. */
+.gallery-section > .section-inner {
+  padding-top: 64px;        /* was 120px */
+  padding-bottom: 56px;     /* was 80px  */
+}
+.gallery-header {
+  margin-bottom: 32px;      /* was 56px */
+}
+
+/* 3. Make gallery cards 25% larger on desktop (3-up view).
+   Scoped to >=901px so it does NOT clobber the tablet (<=900px, 2-up at
+   styles.css:1619) and mobile (<=768px, 85% at styles.css:1717) rules,
+   which source order would otherwise override and cause overflow. */
+@media (min-width: 901px) {
+  .gallery-item {
+    flex: 0 0 calc((100% - 40px) / 3 * 1.25);
+  }
+}
