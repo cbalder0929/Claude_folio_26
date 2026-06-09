@@ -239,7 +239,9 @@ body {
   filter: none;
   z-index: 0;
   pointer-events: none;
-  contain: strict;
+  contain: layout style paint;
+  backface-visibility: hidden;
+  transition: transform 0.08s linear;
 }
 
 /* ---- LAYER 2: DROPLET GLASS LAYER ---- */
@@ -273,7 +275,9 @@ body {
 
   z-index: 1;
   pointer-events: none;
-  contain: strict;
+  contain: layout style paint;
+  backface-visibility: hidden;
+  transition: transform 0.08s linear;
 }
 
 /* Glass sheen between bg and droplet layer */
@@ -548,7 +552,9 @@ section {
   will-change: transform;
   filter: brightness(0.55) saturate(0.75);
   z-index: 0;
-  contain: strict;
+  contain: layout style paint;
+  backface-visibility: hidden;
+  transition: transform 0.08s linear;
 }
 
 /* ---- PROJECTS DROPLET LAYER ---- */
@@ -573,6 +579,8 @@ section {
       rgba(0, 0, 0, 0.70) 88%,
       rgba(0, 0, 0, 0.92) 100%);
   z-index: 1;
+  backface-visibility: hidden;
+  transition: transform 0.08s linear;
 }
 
 /* Dark navy overlay to keep cards legible against the rain bg */
@@ -889,7 +897,9 @@ section {
   filter: none;
   z-index: 0;
   pointer-events: none;
-  contain: strict;
+  contain: layout style paint;
+  backface-visibility: hidden;
+  transition: transform 0.08s linear;
 }
 
 .gallery__droplets {
@@ -914,7 +924,9 @@ section {
       rgba(0, 0, 0, 0.92) 100%);
   z-index: 1;
   pointer-events: none;
-  contain: strict;
+  contain: layout style paint;
+  backface-visibility: hidden;
+  transition: transform 0.08s linear;
 }
 
 .gallery__overlay {

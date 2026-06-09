@@ -20,30 +20,39 @@ const navbar          = document.getElementById('navbar');
 
 // Parallax speed coefficients
 const BG_SPEED   = 0.25;
-const DROP_SPEED = 0.55;
+const DROP_SPEED = 0.40;
 
 let ticking         = false;
 
-function applyParallaxSection(section, bgLayer, dropletLayer, scrollY, viewportHeight) {
-  if (!section) return;
+// Cached section offsets — updated on resize to avoid layout reads per frame
+let cachedOffsets = {};
 
-  const sectionTop = section.offsetTop;
+function cacheSectionOffsets() {
+  cachedOffsets.projects = projectsSection ? projectsSection.offsetTop : 0;
+  cachedOffsets.projectsHeight = projectsSection ? projectsSection.offsetHeight : 0;
+  cachedOffsets.gallery = gallerySection ? gallerySection.offsetTop : 0;
+  cachedOffsets.galleryHeight = gallerySection ? gallerySection.offsetHeight : 0;
+}
+
+cacheSectionOffsets();
+
+function applyParallaxSection(sectionTop, sectionHeight, bgLayer, dropletLayer, scrollY, viewportHeight) {
   const relativeScroll = scrollY - sectionTop;
 
-  if (scrollY > sectionTop - viewportHeight && scrollY < sectionTop + section.offsetHeight) {
+  if (scrollY > sectionTop - viewportHeight && scrollY < sectionTop + sectionHeight) {
     if (bgLayer) {
-      bgLayer.style.transform = `translate3d(0,${relativeScroll * BG_SPEED}px,0)`;
+      bgLayer.style.transform = `translateY(${relativeScroll * BG_SPEED}px)`;
     }
     if (dropletLayer) {
-      dropletLayer.style.transform = `translate3d(0,${relativeScroll * DROP_SPEED}px,0)`;
+      dropletLayer.style.transform = `translateY(${relativeScroll * DROP_SPEED}px)`;
     }
   }
 }
 
 /**
  * Core parallax render call — runs inside rAF loop.
- * Uses transform: translate3d() to force GPU compositing and
- * keep rendering on the compositor thread (no layout reflows).
+ * Uses transform: translateY() with will-change: transform for GPU compositing
+ * and keeps rendering on the compositor thread (no layout reflows).
  */
 function renderParallax() {
   const scrollY = window.scrollY;
@@ -51,14 +60,18 @@ function renderParallax() {
 
   // Hero — only compute if hero is in view
   if (scrollY < viewportHeight * 2) {
-    applyParallaxSection(document.body, heroBg, heroDroplets, scrollY, viewportHeight);
+    applyParallaxSection(0, viewportHeight, heroBg, heroDroplets, scrollY, viewportHeight);
   }
 
   // Projects section — parallax relative to its own top edge
-  applyParallaxSection(projectsSection, projectsBg, projectsDroplets, scrollY, viewportHeight);
+  if (projectsSection) {
+    applyParallaxSection(cachedOffsets.projects, cachedOffsets.projectsHeight, projectsBg, projectsDroplets, scrollY, viewportHeight);
+  }
 
   // Gallery section — only compute when in view
-  applyParallaxSection(gallerySection, galleryBg, galleryDroplets, scrollY, viewportHeight);
+  if (gallerySection) {
+    applyParallaxSection(cachedOffsets.gallery, cachedOffsets.galleryHeight, galleryBg, galleryDroplets, scrollY, viewportHeight);
+  }
 
   // Navbar glass effect on scroll
   if (navbar) {
@@ -85,7 +98,13 @@ function onScroll() {
 }
 
 window.addEventListener('scroll', onScroll, { passive: true });
-window.addEventListener('resize', renderParallax, { passive: true });
+window.addEventListener('resize', function onResize() {
+  cacheSectionOffsets();
+  if (!ticking) {
+    requestAnimationFrame(renderParallax);
+    ticking = true;
+  }
+}, { passive: true });
 
 // Initial render (no scroll yet)
 renderParallax();
