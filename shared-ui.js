@@ -60,9 +60,9 @@ const translations = {
     card009Desc:          'A Python program that builds real audio from scratch by stacking sine waves. Type in MIDI notes, pick a timbre (sine, triangle, square, sawtooth), get back a .wav you can download — usable from the browser or the CLI.',
     card010Desc:          'Brief description of the project, its goals, and key outcomes. Add your details here.',
     card011Desc:          'Brief description of the project, its goals, and key outcomes. Add your details here.',
-    card012Desc:          'Brief description of the project, its goals, and key outcomes. Add your details here.',
-    card013Desc:          'Brief description of the project, its goals, and key outcomes. Add your details here.',
-    card014Desc:          'Brief description of the project, its goals, and key outcomes. Add your details here.',
+    card012Desc:          'Odds of You is an interactive scrolling website that explores the incredible odds of being born and the opportunities many people have. Through ocean-themed visuals, animations, and powerful statistics, the site encourages users to stop making excuses and become the shark.',
+    card013Desc:          'AI Image Analyzer lets users upload an image and see what an AI model thinks it contains. Using a machine learning model trained on millions of images, it predicts the subject and displays a confidence score for its answer.',
+    card014Desc:          'Doodle.AI is an interactive drawing app that lets users sketch on a canvas while an AI model guesses what they\'re drawing in real time. Built with ml5.js and DoodleNet, it turns simple doodles into a fun machine learning experience.',
     // View project button
     viewProject:          'View Project',
     // Gallery
@@ -175,9 +175,9 @@ const translations = {
     card009Desc:          'Un programa en Python que genera audio real desde cero apilando ondas sinusoidales. Escribe notas MIDI, elige un timbre y obtén un .wav descargable — usable desde el navegador o la CLI.',
     card010Desc:          'Descripción breve del proyecto, sus objetivos y resultados clave. Añade tus detalles aquí.',
     card011Desc:          'Descripción breve del proyecto, sus objetivos y resultados clave. Añade tus detalles aquí.',
-    card012Desc:          'Descripción breve del proyecto, sus objetivos y resultados clave. Añade tus detalles aquí.',
-    card013Desc:          'Descripción breve del proyecto, sus objetivos y resultados clave. Añade tus detalles aquí.',
-    card014Desc:          'Descripción breve del proyecto, sus objetivos y resultados clave. Añade tus detalles aquí.',
+    card012Desc:          'Odds of You es un sitio web interactivo de desplazamiento que explora las increíbles probabilidades de nacer y las oportunidades que muchas personas tienen. A través de visuales temáticos del océano, animaciones y estadísticas poderosas, el sitio anima a los usuarios a dejar de poner excusas y convertirse en el tiburón.',
+    card013Desc:          'El Analizador de Imágenes con IA permite a los usuarios subir una imagen y ver qué cree el modelo que contiene. Usando un modelo de aprendizaje automático entrenado con millones de imágenes, predice el sujeto y muestra una puntuación de confianza para su respuesta.',
+    card014Desc:          'Doodle.AI es una aplicación de dibujo interactiva que permite a los usuarios esbozar en un lienzo mientras un modelo de IA adivina lo que están dibujando en tiempo real. Construida con ml5.js y DoodleNet, convierte simples garabatos en una divertida experiencia de aprendizaje automático.',
     // View project button
     viewProject:          'Ver Proyecto',
     // Gallery

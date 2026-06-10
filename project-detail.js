@@ -195,39 +195,51 @@ mediaItems: [
     nextProject: '012'
   },
   '012': {
-    title: 'Project Title',
+    title: 'Odds Of You',
     number: '012',
-    overview: 'Brief overview of the project.',
-    description: 'Add your detailed project description here. Explain the context, goals, and key outcomes of the project.',
+    overview: 'A single-page scrollytelling experience that uses an ocean descent as a metaphor for appreciating the odds you\'ve already beaten — and becoming the shark.',
+    description: '"Odds of You" is a single-page, scrollytelling web experience created by Charles M. Balderas that uses the metaphor of an ocean descent to frame a motivational narrative around statistics. As the user scrolls, they "dive" from the sunlit surface into progressively darker waters, encountering real-world data at each depth: only 15% of people are born in first-world countries, just 7% have access to higher education, and roughly 27% of college graduates land a job in their field of study. Each statistic is paired with a reflective message urging the reader to appreciate their privileges and take ownership of their success. The visual descent—complete with caustic light shafts, fish schools, marine snow particles, and a depth gauge counting feet—transforms dry numbers into an emotionally resonant journey.</p><p>Technically, the project is built entirely with vanilla HTML, CSS, and JavaScript (no frameworks), leveraging scroll-linked animations, intersection observers, CSS custom properties, and spring-physics-based motion to create a polished, cinematic feel. A continuous depth-grade overlay darkens and cools the color palette as the user scrolls, while mouse-driven parallax on ambient layers adds subtle interactivity. The site is accessibility-conscious, with a prefers-reduced-motion path that disables looping animations while preserving content readability. Typography uses Cormorant Garamond for elegant editorial headlines and JetBrains Mono for the data-driven numerical elements, reinforcing the blend of story and statistics.</p><p>The narrative culminates in the "abyss" section, where a shark emerges as the central metaphor: it survives not through aggression but through relentless forward motion, reading the current, and committing fully. This serves as the project\'s thesis — that in a world of long odds and fierce competition, success belongs to those who adapt and never stop moving.',
     mediaItems: [
       { type: 'placeholder', label: 'Project Image 1' }
     ],
-    challenges: [],
-    techStack: ['Stack', 'Tools'],
+    challenges: [
+      { title: 'Scroll-Linked Animation', description: 'Coordinating intersection observers, scroll progress values, and spring-physics motion to produce a cinematic descent without using any animation frameworks.' },
+      { title: 'Depth-Grade Visuals', description: 'Building a continuous overlay that darkens and cools the color palette as the user scrolls, while layering caustic light shafts, marine snow particles, and fish schools at the right depth cues.' },
+      { title: 'Accessibility', description: 'Implementing a prefers-reduced-motion path that disables looping animations without breaking the narrative or hiding any content.' }
+    ],
+    techStack: ['HTML', 'CSS', 'JavaScript', 'Intersection Observer API', 'CSS Custom Properties', 'Cormorant Garamond', 'JetBrains Mono'],
     nextProject: '013'
   },
   '013': {
-    title: 'Project Title',
+    title: 'Image Analyzer',
     number: '013',
-    overview: 'Brief overview of the project.',
-    description: 'Add your detailed project description here. Explain the context, goals, and key outcomes of the project.',
+    overview: 'A web application that uses artificial intelligence and machine learning to identify objects, animals, people, and other subjects within an uploaded image — all processed locally in the browser.',
+    description: 'The AI Image Analyzer is a web application that uses artificial intelligence and machine learning to identify objects, animals, people, and other subjects within an image. Users can either drag and drop an image or select one from their device, and the application will analyze the picture and provide its best prediction of what it sees. Along with the prediction, the application also displays a confidence score, which indicates how certain the AI model is about its answer.</p><p>At the heart of this project is a pre-trained machine learning model called MobileNet. MobileNet has been trained on millions of images and thousands of different categories, allowing it to recognize a wide variety of objects. Instead of manually programming the application to identify every possible item, the model has learned patterns, shapes, colors, and features from a massive dataset. This allows it to make educated predictions when presented with new images.</p><p>One of the most interesting aspects of this project is that the image analysis happens directly in the user\'s web browser. The uploaded image is not sent to a server for processing. Instead, JavaScript and TensorFlow.js load the machine learning model into the browser, where the image is analyzed locally. This approach helps improve privacy, reduces server costs, and demonstrates the power of modern web technologies.</p><p>The application also includes a user-friendly interface designed to make the experience simple and interactive. A drag-and-drop upload area allows users to quickly submit images, while a progress bar provides feedback as the AI model loads. Once the image has been processed, the results are displayed in a clear and easy-to-read format so users can immediately see the AI\'s prediction and confidence level.</p><p>Developing this project provided hands-on experience with machine learning concepts, JavaScript programming, asynchronous operations, and working with external libraries. It demonstrates how artificial intelligence can be integrated into everyday web applications without requiring expensive hardware or advanced server infrastructure.</p><p>This project highlights the growing role of artificial intelligence in modern technology and shows how machine learning models can be used to solve real-world problems. While the AI is not perfect and may occasionally misidentify an image, it offers an engaging way to explore how computer vision systems interpret and classify visual information.',
     mediaItems: [
       { type: 'placeholder', label: 'Project Image 1' }
     ],
-    challenges: [],
-    techStack: ['Stack', 'Tools'],
+    challenges: [
+      { title: 'Client-Side ML', description: 'Loading and running a full machine learning model inside the browser using TensorFlow.js, without any server-side processing.' },
+      { title: 'Async Model Loading', description: 'Managing asynchronous operations to load MobileNet and process images while keeping the UI responsive with a live progress indicator.' },
+      { title: 'User Experience', description: 'Designing a drag-and-drop interface that feels immediate and clear, surfacing the AI\'s prediction and confidence score in a readable format.' }
+    ],
+    techStack: ['HTML', 'CSS', 'JavaScript', 'TensorFlow.js', 'MobileNet'],
     nextProject: '014'
   },
   '014': {
-    title: 'Project Title',
+    title: 'Doodle.AI',
     number: '014',
-    overview: 'Brief overview of the project.',
-    description: 'Add your detailed project description here. Explain the context, goals, and key outcomes of the project.',
+    overview: 'An interactive drawing app where users sketch on a canvas and an AI model guesses what they\'re drawing in real time using ml5.js and DoodleNet.',
+    description: 'Doodle.AI is an interactive web application that combines creativity with artificial intelligence. Users can draw directly on a browser-based canvas and watch as an AI model analyzes their sketch in real time, making predictions about what it thinks the drawing represents. As the doodle becomes more detailed, the predictions update live along with confidence scores, giving users instant feedback and a fun way to see how machine learning interprets their artwork.</p><p>The project was built using p5.js for the drawing canvas and user interactions, while ml5.js and DoodleNet handle the image recognition. DoodleNet is a pre-trained neural network that has learned to recognize hundreds of common doodles from a large dataset. Every time the user adds a new line to the canvas, the model reevaluates the drawing and generates updated predictions. This creates an engaging experience where users can experiment with different sketches and see how the AI\'s guesses evolve over time.</p><p>To make the application easy and enjoyable to use, I designed a clean interface with tools for changing colors, adjusting brush sizes, and clearing the canvas. The canvas is fully responsive and adapts to different screen sizes, making it accessible on both desktop and mobile devices. The real-time prediction panel keeps users engaged by displaying the AI\'s top guesses and confidence levels as they draw.</p><p>This project was a great way to explore machine learning in a practical and interactive setting. By using ml5.js, which is built on top of TensorFlow.js, I was able to integrate AI directly into the browser without needing a backend server. Doodle.AI demonstrates how modern web technologies and machine learning can work together to create applications that are both educational and entertaining, while giving users a hands-on look at how artificial intelligence recognizes patterns and images.',
     mediaItems: [
       { type: 'placeholder', label: 'Project Image 1' }
     ],
-    challenges: [],
-    techStack: ['Stack', 'Tools'],
+    challenges: [
+      { title: 'Real-Time Inference', description: 'Running DoodleNet inference on every canvas update without blocking the UI, keeping predictions feeling instant as the user draws.' },
+      { title: 'Canvas & ML Integration', description: 'Bridging p5.js\'s drawing surface with ml5.js so the model always receives a clean snapshot of the current sketch for accurate classification.' },
+      { title: 'Responsive Canvas', description: 'Scaling the drawing canvas and tool controls to work cleanly across desktop and mobile screen sizes without distorting the sketch or prediction output.' }
+    ],
+    techStack: ['HTML', 'CSS', 'JavaScript', 'p5.js', 'ml5.js', 'DoodleNet', 'TensorFlow.js'],
     nextProject: null
   }
 };
