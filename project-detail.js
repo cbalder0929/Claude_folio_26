@@ -55,21 +55,21 @@ mediaItems: [
     nextProject: '003'
   },
   '003': {
-    title: 'Orbit CMS Interface',
+    title: 'Chess Learning',
     number: '003',
-    overview: 'Headless CMS front-end with inline editing and multi-locale support.',
-    description: 'Orbit provides a modern interface for managing content across a global company with support for multiple languages and regions. Features include inline WYSIWYG editing, structured text rendering, and a custom GraphQL layer for efficient content delivery.',
+    overview: 'A Windows desktop app that teaches chess piece movement through color-coded move and capture highlights on a live 8×8 board.',
+    description: 'Chess Learning is a Windows desktop application built in C# using WPF and .NET 9 to help users learn how chess pieces move. The application displays a standard 8×8 chessboard with all pieces in their starting positions. When a user clicks on a piece, the program highlights every legal move it can make — green squares for valid moves and red squares for capture opportunities. A status bar shows the current player\'s turn and the selected piece, making it easy to follow the game and understand movement rules.\n\nThe project follows the MVVM design pattern, separating the user interface from the game logic. The chess engine is built around an abstract Piece class, with individual classes for pawns, rooks, bishops, knights, queens, and kings. Each piece contains its own movement logic, while a Board class manages piece locations and move validation. The ViewModel handles user interactions, turn tracking, and board highlighting.\n\nThis project was built to strengthen my understanding of object-oriented programming, WPF development, and MVVM architecture. Rather than targeting every advanced chess rule, I focused on building a clean, organized codebase that demonstrates inheritance, polymorphism, data binding, and separation of concerns in a real-world .NET desktop application.',
     mediaItems: [
-      { type: 'placeholder', label: 'NextMove Gameplay' },
-      { type: 'placeholder', label: 'Multi-locale Support' },
-      { type: 'placeholder', label: 'Admin Dashboard' }
+      { type: 'placeholder', label: 'Chessboard Starting Position' },
+      { type: 'placeholder', label: 'Move Highlights' },
+      { type: 'placeholder', label: 'Capture Indicators' }
     ],
     challenges: [
-      { title: 'Complex Data Models', description: 'Handling deeply nested structured text and custom content types with GraphQL.' },
-      { title: 'Localization at Scale', description: 'Managing content translations and regional variations without duplicating efforts.' },
-      { title: 'Editor UX', description: 'Creating an intuitive inline editing experience for non-technical content editors.' }
+      { title: 'Per-Piece Move Logic', description: 'Building an abstract Piece class with six concrete subclasses, each owning its own movement rules while sharing a common validation interface.' },
+      { title: 'Two-Color Highlight System', description: 'Designing green-for-move and red-for-capture square highlighting that updates instantly on every click without polluting the ViewModel.' },
+      { title: 'MVVM Data Binding', description: 'Keeping the WPF board UI fully in sync with Board and ViewModel state through data binding, avoiding code-behind and maintaining clean separation of concerns.' }
     ],
-    techStack: ['Next.js', 'DatoCMS', 'GraphQL', 'React', 'TypeScript'],
+    techStack: ['C#', 'WPF', '.NET 9', 'XAML', 'MVVM'],
     nextProject: '004'
   },
   '004': {
