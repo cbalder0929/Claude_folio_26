@@ -112,6 +112,7 @@ const translations = {
     footerCraft:          'Crafted with precision',
     // Detail page labels
     projectOverviewLabel: 'Project Overview',
+    challengesLabel:      'Challenges',
     techStackLabel:       'Tech Stack',
     prevProjectLabel:     'Previous Project',
     nextProjectLabel:     'Next Project',
@@ -227,6 +228,7 @@ const translations = {
     footerCraft:          'Creado con precisión',
     // Detail page labels
     projectOverviewLabel: 'Descripción del Proyecto',
+    challengesLabel:      'Desafíos',
     techStackLabel:       'Tecnologías',
     prevProjectLabel:     'Proyecto Anterior',
     nextProjectLabel:     'Siguiente Proyecto',

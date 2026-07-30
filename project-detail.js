@@ -147,26 +147,33 @@ mediaItems: [
     title: 'Bank Parser',
     number: '008',
     overview: 'My pride and joy — turn a bank statement PDF into a clean CSV in seconds, entirely on your own machine.',
-    description: 'Bank Parser is the Python tool I started when I was working as a tax prep assistant, manually categorizing transactions and knowing there had to be a faster way. So I dove head first into Python and built it. Drag a PDF onto a local web page (FastAPI + a vanilla JS frontend), the parser uses pdfplumber to read every line, pulls out date / description / amount, and gives you back a preview table and a downloadable CSV. You can also upload multiple statements at once and combine them into one file. No accounts, no cloud, nothing leaves your computer. I leveraged AI to get the prototype standing, then came back to refactor, fix the messy formatting quirks every bank has, and add features. Next steps: more debugging, smarter features, potentially deploying it as an app, real user testing, automating more of the workflow, and tightening security.',
+    description: "Bank Parser is the Python tool I started when I was working as a tax prep assistant, manually categorizing transactions and knowing there had to be a faster way. So I dove head first into Python and built it. Drag a PDF onto a local web page (FastAPI + a vanilla JS frontend), the parser uses pdfplumber to read every line, pulls out date / description / amount, and gives you back a preview table and a downloadable CSV. You can also upload multiple statements at once and combine them into one file. Once you've got clean data, a Reports page turns it into something you'd actually look at: filter by date range or account (BoA Checking, BoA Credit, Discover, Amex, Other), see income / spending / net totals at a glance, and drill into spending-by-category and income-by-source donut charts plus a monthly income-vs-spending bar chart and a top-merchants table. Transactions get auto-categorized into buckets like Utilities, Restaurants, Subscriptions, Travel/Entertainment, Merchandise, Dining, Gasoline, and Transit, so you're not tagging every line by hand. No accounts, no cloud, nothing leaves your computer. I leveraged AI to get the prototype standing, then came back to refactor, fix the messy formatting quirks every bank has, and add features. Next steps: more debugging, smarter features, potentially deploying it as an app, real user testing, automating more of the workflow, and tightening security.",
     mediaItems: [
       { type: 'image', src: 'imgs/PtVLogo.png', label: 'Bank Parser Logo' },
-      { type: 'placeholder', label: 'Placeholder' }
+      { type: 'image', src: 'imgs/PtVHero.webp', label: 'Drag and drop a statement PDF', fit: 'contain' },
+      { type: 'image', src: 'imgs/PtVDemo.webp', label: 'Parsed CSV preview', fit: 'contain' },
+      { type: 'image', src: 'imgs/PtVPieGraph.webp', label: 'Reports — spending by category', fit: 'contain' },
+      { type: 'image', src: 'imgs/PtVBarGraph.webp', label: 'Reports — monthly income vs spending', fit: 'contain' }
     ],
     challenges: [
-      { title: 'Challenge 1', description: 'Description of first challenge and how it was solved.' }
+      { title: 'One parser, every bank’s PDF format', description: 'Every bank lays out its statements differently — dates, descriptions, and amounts all land in slightly different table structures. Getting pdfplumber to reliably pull clean date / description / amount rows out of wildly inconsistent PDF layouts, without hardcoding a template per bank, took the most iteration of anything in this project.' },
+      { title: 'Categorizing transactions without a paid API', description: 'Categorization runs on local keyword and pattern matching against the merchant string, which works well for recognizable line items but still leaves a real "Uncategorized" bucket for anything it doesn’t recognize — visible in the reports above. That’s an open problem I’m still working on, likely by expanding the pattern rules over time.' }
     ],
-    techStack: ['Python', 'FastAPI', 'pdfplumber', 'pandas', 'HTML', 'CSS', 'JavaScript'],
+    techStack: ['Python', 'FastAPI', 'pdfplumber', 'pandas', 'Chart.js', 'HTML', 'CSS', 'JavaScript'],
     nextProject: '009'
   },
   '009': {
     title: 'Additive Synthesizer',
     number: '009',
     overview: "Turn a list of MIDI notes into a real `.wav` file — built from scratch, no DAW required.",
-    description: "I built this one to actually understand how computers make sound, instead of just clicking knobs in a DAW. You give it a list of MIDI notes (0–127, negatives are rests), a tempo in BPM, and an optional timbre — sine, triangle, square, or sawtooth — and it generates a real `.wav` file by stacking sine waves at integer multiples of each note's frequency. That's the \"additive\" in additive synthesis. All the math runs locally in Python via NumPy; there's a Flask web UI with an on-screen piano and presets (Twinkle Twinkle, Ode to Joy, C Major scale) and a CLI version that plays through your speakers directly. No paid APIs, no AI models, no external services — just math turning into sound.",
+    description: "I built this one to actually understand how computers make sound, instead of just clicking knobs in a DAW. You give it a list of MIDI notes (0–127, negatives are rests), a tempo in BPM, and an optional timbre — sine, triangle, square, or sawtooth — and it generates a real `.wav` file by stacking sine waves at integer multiples of each note's frequency. That's the \"additive\" in additive synthesis. It's monophonic by design — one note at a time, like the CLI version that plays through your speakers directly. All the math runs locally in Python via NumPy; there's a Flask web UI with an on-screen piano and presets (Twinkle Twinkle, Ode to Joy, C Major scale, Mary Had a Little Lamb). No paid APIs, no AI models, no external services — just math turning into sound.",
     mediaItems: [
-      { type: 'placeholder', label: 'Project Image 1' }
+      { type: 'image', src: 'imgs/synthHero.webp', label: 'MIDI input, piano, and timbre picker', fit: 'contain' }
     ],
-    challenges: [],
+    challenges: [
+      { title: 'Notes to frequencies to waveforms', description: 'MIDI notes are just integers (69 = A4 = 440 Hz), so the first real piece was converting note number to frequency, then stacking sine waves at integer multiples of that frequency — weighted differently per timbre — to build triangle, square, and sawtooth waves out of pure additive synthesis instead of built-in waveform generators.' },
+      { title: 'Clicks and pops at note boundaries', description: 'Naively concatenating raw sine wave segments produces audible clicks wherever one note ends and the next begins, since the waveform doesn’t cross zero at the cut. Smoothing those transitions so notes and rests (encoded as negative numbers) sound continuous was one of the trickier parts of getting this to sound musical instead of choppy.' }
+    ],
     techStack: ['Python', 'NumPy', 'Flask', 'soundfile', 'sounddevice', 'HTML', 'JavaScript'],
     nextProject: '010'
   },
@@ -347,9 +354,10 @@ function setupCarouselMedia(mediaItems) {
   carouselTrack.innerHTML = mediaItems
     .map((media, index) => {
       if (media.type === 'image') {
+        const fitClass = media.fit === 'contain' ? ' fit-contain' : '';
         return `
         <div class="carousel-slide" data-index="${index}">
-          <img src="${media.src}" alt="${media.label}" loading="lazy" />
+          <img src="${media.src}" alt="${media.label}" loading="lazy" class="${fitClass.trim()}" />
         </div>
       `;
       } else if (media.type === 'video') {

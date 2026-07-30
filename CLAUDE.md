@@ -27,7 +27,7 @@ Dark mode is toggled via a class on `<body>`. Light mode button is in the nav lo
 
 ## i18n
 
-Translations live in the `i18n` object inside `script.js`. HTML elements use `data-i18n="keyName"` attributes. Always add both `en` and `es` entries when adding new copy.
+Translations live in the `translations` object inside `shared-ui.js`. HTML elements use `data-i18n="keyName"` attributes. Always add both `en` and `es` entries when adding new copy. Project detail page body content (`projectsData` in `project-detail.js`) is English-only by design — there is no Spanish variant.
 
 ## Project Data
 
