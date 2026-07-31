@@ -149,6 +149,7 @@ mediaItems: [
     overview: 'My pride and joy — turn a bank statement PDF into a clean CSV in seconds, entirely on your own machine.',
     description: "Bank Parser is the Python tool I started when I was working as a tax prep assistant, manually categorizing transactions and knowing there had to be a faster way. So I dove head first into Python and built it. Drag a PDF onto a local web page (FastAPI + a vanilla JS frontend), the parser uses pdfplumber to read every line, pulls out date / description / amount, and gives you back a preview table and a downloadable CSV. You can also upload multiple statements at once and combine them into one file. Once you've got clean data, a Reports page turns it into something you'd actually look at: filter by date range or account (BoA Checking, BoA Credit, Discover, Amex, Other), see income / spending / net totals at a glance, and drill into spending-by-category and income-by-source donut charts plus a monthly income-vs-spending bar chart and a top-merchants table. Transactions get auto-categorized into buckets like Utilities, Restaurants, Subscriptions, Travel/Entertainment, Merchandise, Dining, Gasoline, and Transit, so you're not tagging every line by hand. No accounts, no cloud, nothing leaves your computer. I leveraged AI to get the prototype standing, then came back to refactor, fix the messy formatting quirks every bank has, and add features. Next steps: more debugging, smarter features, potentially deploying it as an app, real user testing, automating more of the workflow, and tightening security.",
     mediaItems: [
+      { type: 'video', src: 'imgs/PtVDemoVid.mp4', label: 'Live demo: parsing a statement and generating reports', fit: 'contain' },
       { type: 'image', src: 'imgs/PtVLogo.png', label: 'Bank Parser Logo' },
       { type: 'image', src: 'imgs/PtVHero.webp', label: 'Drag and drop a statement PDF', fit: 'contain' },
       { type: 'image', src: 'imgs/PtVDemo.webp', label: 'Parsed CSV preview', fit: 'contain' },
@@ -361,9 +362,11 @@ function setupCarouselMedia(mediaItems) {
         </div>
       `;
       } else if (media.type === 'video') {
+        const fitClass = media.fit === 'contain' ? ' fit-contain' : '';
+        const autoplayAttrs = index === 0 ? 'autoplay preload="auto"' : 'preload="none"';
         return `
         <div class="carousel-slide" data-index="${index}">
-          <video controls muted playsinline webkit-playsinline loop preload="none">
+          <video controls muted playsinline webkit-playsinline loop ${autoplayAttrs} class="${fitClass.trim()}">
             <source src="${media.src}" type="video/mp4" />
             Your browser does not support the video tag.
           </video>

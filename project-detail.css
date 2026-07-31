@@ -132,7 +132,8 @@ body.light-mode .back-home-btn:hover {
   object-fit: cover;
 }
 
-.carousel-slide img.fit-contain {
+.carousel-slide img.fit-contain,
+.carousel-slide video.fit-contain {
   object-fit: contain;
 }
 
