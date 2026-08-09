@@ -60,8 +60,8 @@ mediaItems: [
     overview: 'A Windows desktop app that teaches chess piece movement through color-coded move and capture highlights on a live 8×8 board.',
     description: 'Chess Learning is a Windows desktop application built in C# using WPF and .NET 9 to help users learn how chess pieces move. The application displays a standard 8×8 chessboard with all pieces in their starting positions. When a user clicks on a piece, the program highlights every legal move it can make — green squares for valid moves and red squares for capture opportunities. A status bar shows the current player\'s turn and the selected piece, making it easy to follow the game and understand movement rules.\n\nThe project follows the MVVM design pattern, separating the user interface from the game logic. The chess engine is built around an abstract Piece class, with individual classes for pawns, rooks, bishops, knights, queens, and kings. Each piece contains its own movement logic, while a Board class manages piece locations and move validation. The ViewModel handles user interactions, turn tracking, and board highlighting.\n\nThis project was built to strengthen my understanding of object-oriented programming, WPF development, and MVVM architecture. Rather than targeting every advanced chess rule, I focused on building a clean, organized codebase that demonstrates inheritance, polymorphism, data binding, and separation of concerns in a real-world .NET desktop application.',
     mediaItems: [
-      { type: 'placeholder', label: 'Chessboard Starting Position' },
-      { type: 'placeholder', label: 'Move Highlights' },
+      { type: 'video', src: 'imgs/chessDemoVId.mp4', label: 'Chess Learning Demo' },
+      { type: 'image', src: 'imgs/ChessDemoPic.png', label: 'Chessboard Starting Position' },
       { type: 'placeholder', label: 'Capture Indicators' }
     ],
     challenges: [
@@ -73,21 +73,21 @@ mediaItems: [
     nextProject: '004'
   },
   '004': {
-    title: 'Pulse Health Dashboard',
+    title: 'Craft World',
     number: '004',
-    overview: 'Accessible HIPAA-aligned patient vitals interface with configurable alert thresholds.',
-    description: 'Pulse is a healthcare dashboard providing real-time patient monitoring for clinical settings. Fully HIPAA compliant, it integrates with HL7 FHIR data streams and includes customizable alert thresholds for different patient conditions.',
+    overview: 'A Minecraft-style crafting and building game with a procedurally explorable forest world and a full item-crafting system.',
+    description: 'Craft World is a sandbox crafting game where players gather resources from an open forest environment and combine them through a crafting menu to build tools, structures, and items. The project explores core sandbox-game mechanics: world navigation, resource gathering, an inventory-driven crafting UI, and the underlying systems that tie player state to the game world.',
     mediaItems: [
-      { type: 'placeholder', label: 'Craft World Demo' },
-      { type: 'placeholder', label: 'Vitals Monitoring' },
-      { type: 'placeholder', label: 'Alert Configuration' }
+      { type: 'image', src: 'imgs/CraftWorldMenu.png', label: 'Crafting Menu' },
+      { type: 'image', src: 'imgs/CraftWorldForest.png', label: 'Forest World' },
+      { type: 'image', src: 'imgs/CraftWorldCrafting.png', label: 'Crafting in Action' }
     ],
     challenges: [
-      { title: 'HIPAA Compliance', description: 'Implementing security measures and audit trails for protected health information.' },
-      { title: 'Real-time Monitoring', description: 'Processing continuous data streams from medical devices with minimal latency.' },
-      { title: 'Accessibility', description: 'Ensuring WCAG 2.1 AA compliance for critical healthcare interfaces.' }
+      { title: 'Crafting System', description: 'Designing an inventory and recipe system that maps gathered resources to craftable items without hardcoding every combination.' },
+      { title: 'World Building', description: 'Building an explorable forest environment with resource nodes players can gather from.' },
+      { title: 'UI/Game State Sync', description: 'Keeping the crafting menu UI in sync with the player’s live inventory and world state.' }
     ],
-    techStack: ['Vue 3', 'FHIR API', 'Chart.js', 'Node.js', 'PostgreSQL'],
+    techStack: ['Unity', 'C#'],
     nextProject: '005'
   },
   '005': {
@@ -114,9 +114,9 @@ mediaItems: [
     overview: 'Drop in a bank statement, get back a categorized breakdown of where your money went.',
     description: "FinBot.AI is a web app — React on the front, FastAPI on the back — that reads your bank or credit card statements and sorts every transaction into Food, Dining, Transport, Shopping, and so on. You drag in a PDF or CSV, a robot mascot animates while the backend works, and you get back summary cards, category tabs, and a flag on any unusually large charge. The interesting piece is the three-tier categorization pipeline: about 150 popular merchants are hardcoded for instant matches, anything Claude has categorized before is cached locally forever, and only genuinely new merchants get sent to the Claude API. After a couple of uses, almost everything is handled by tiers 1 and 2 — so the AI cost stays near zero. This was V1, and the honest takeaway was the dependency on the Claude API: once I ran out of calls, scalability hit a wall, and the categorization occasionally confused debits and credits. Those limits are exactly why V2 (running locally on Ollama) exists.",
     mediaItems: [
-      { type: 'placeholder', label: 'Prompt Editor' },
-      { type: 'placeholder', label: 'Model Comparison' },
-      { type: 'placeholder', label: 'Results Analysis' }
+      { type: 'video', src: 'imgs/FinBotVid.mp4', label: 'FinBot.AI Demo' },
+      { type: 'image', src: 'imgs/FinBotDemoStill.png', label: 'FinBot.AI Dashboard' },
+      { type: 'image', src: 'imgs/FinBotDemoGraph.png', label: 'Spending Category Breakdown' }
     ],
     challenges: [
       { title: 'Complex Data Workflows', description: 'Managing intricate prompt chains and model evaluation pipelines.' },
@@ -127,20 +127,21 @@ mediaItems: [
     nextProject: '007'
   },
   '007': {
-    title: 'Project Title',
+    title: 'FinScrape',
     number: '007',
-    overview: 'Brief overview of the project.',
-    description: 'Add your detailed project description here. Explain the context, goals, and key outcomes of the project.',
+    overview: 'A hybrid rule-based and local-LLM rebuild of FinBot that parses bank statements and turns them into spending insights without depending on a paid API.',
+    description: 'FinBot started as a Python-based personal finance tool I built to turn messy bank and credit card statements into something actually useful. For this iteration, I wanted to take that original proof-of-concept and push it further by incorporating AI without making the entire application dependent on an expensive API. I rebuilt the experience as a full-stack web app where users can drag and drop PDF or CSV statements into a polished interface, watch an animated robot move through the processing pipeline, and get their transactions cleaned, categorized, and turned into spending insights. I also experimented with free, locally running Ollama models to see where a small LLM could actually add value instead of forcing AI into places where traditional code works better.\n\nThat led me to a hybrid approach. The backend uses FastAPI to detect the statement source and route it through dedicated parsers for Discover, American Express, and Bank of America statements. The parsed data is normalized into a common schema so the rest of the application doesn\'t need to care which bank produced it. For categorization, deterministic rules handle the things I can reliably solve with code, while the local LLM is used for cases where the rules aren\'t enough and for natural-language questions about spending. Parsed statements are persisted so FinBot can aggregate information across uploads and expose things like cash flow, category breakdowns, top merchants, and AI-generated summaries.\n\nWhat I like most about this iteration is that it wasn\'t just about adding an LLM because "AI is cool." It was an experiment in figuring out where AI actually provides leverage in a system I had already built. I started with a working Python tool, kept the parts that were reliable and predictable, and then layered AI on top where it could make the experience more flexible. Building it this way gave me hands-on experience with document parsing, pandas-based data normalization, hybrid rule-based/LLM classification, REST APIs with FastAPI, local AI with Ollama, persistent data, and building a polished frontend with vanilla HTML, CSS, JavaScript, and custom SVG/CSS animations.',
     mediaItems: [
-      { type: 'placeholder', label: 'Project Image 1' },
-      { type: 'placeholder', label: 'Project Image 2' },
-      { type: 'placeholder', label: 'Project Image 3' }
+      { type: 'video', src: 'imgs/FinScrapeVideo.mp4', label: 'FinScrape Demo' },
+      { type: 'image', src: 'imgs/FinScrape (1).png', label: 'Statement Upload & Processing' },
+      { type: 'image', src: 'imgs/FinScrape (2).png', label: 'Spending Insights Dashboard' }
     ],
     challenges: [
-      { title: 'Challenge 1', description: 'Description of first challenge and how it was solved.' },
-      { title: 'Challenge 2', description: 'Description of second challenge and how it was solved.' }
+      { title: 'Multi-Bank Statement Parsing', description: 'Building dedicated parsers for Discover, American Express, and Bank of America statement formats and normalizing all of them into one common schema so the rest of the app doesn\'t need to care which bank produced the data.' },
+      { title: 'Hybrid Rule-Based + Local LLM Categorization', description: 'Letting deterministic rules handle the categorization cases that reliable code already solves well, and reserving the local Ollama model for the ambiguous cases and natural-language spending questions where it actually adds leverage.' },
+      { title: 'Cost-Free Local AI', description: 'Swapping a paid API dependency for a locally running Ollama model, so the app stays useful without incurring per-call cost or hitting rate limits.' }
     ],
-    techStack: ['Stack', 'Tools', 'Technologies'],
+    techStack: ['Python', 'FastAPI', 'pandas', 'Ollama', 'HTML', 'CSS', 'JavaScript'],
     nextProject: '008'
   },
   '008': {
@@ -224,7 +225,8 @@ mediaItems: [
     overview: 'A web application that uses artificial intelligence and machine learning to identify objects, animals, people, and other subjects within an uploaded image — all processed locally in the browser.',
     description: 'The AI Image Analyzer is a web application that uses artificial intelligence and machine learning to identify objects, animals, people, and other subjects within an image. Users can either drag and drop an image or select one from their device, and the application will analyze the picture and provide its best prediction of what it sees. Along with the prediction, the application also displays a confidence score, which indicates how certain the AI model is about its answer.</p><p>At the heart of this project is a pre-trained machine learning model called MobileNet. MobileNet has been trained on millions of images and thousands of different categories, allowing it to recognize a wide variety of objects. Instead of manually programming the application to identify every possible item, the model has learned patterns, shapes, colors, and features from a massive dataset. This allows it to make educated predictions when presented with new images.</p><p>One of the most interesting aspects of this project is that the image analysis happens directly in the user\'s web browser. The uploaded image is not sent to a server for processing. Instead, JavaScript and TensorFlow.js load the machine learning model into the browser, where the image is analyzed locally. This approach helps improve privacy, reduces server costs, and demonstrates the power of modern web technologies.</p><p>The application also includes a user-friendly interface designed to make the experience simple and interactive. A drag-and-drop upload area allows users to quickly submit images, while a progress bar provides feedback as the AI model loads. Once the image has been processed, the results are displayed in a clear and easy-to-read format so users can immediately see the AI\'s prediction and confidence level.</p><p>Developing this project provided hands-on experience with machine learning concepts, JavaScript programming, asynchronous operations, and working with external libraries. It demonstrates how artificial intelligence can be integrated into everyday web applications without requiring expensive hardware or advanced server infrastructure.</p><p>This project highlights the growing role of artificial intelligence in modern technology and shows how machine learning models can be used to solve real-world problems. While the AI is not perfect and may occasionally misidentify an image, it offers an engaging way to explore how computer vision systems interpret and classify visual information.',
     mediaItems: [
-      { type: 'placeholder', label: 'Project Image 1' }
+      { type: 'image', src: 'imgs/ImageAI (1).png', label: 'Image Upload & Prediction' },
+      { type: 'image', src: 'imgs/ImageAI (2).png', label: 'Confidence Score Results' }
     ],
     challenges: [
       { title: 'Client-Side ML', description: 'Loading and running a full machine learning model inside the browser using TensorFlow.js, without any server-side processing.' },
@@ -240,7 +242,9 @@ mediaItems: [
     overview: 'An interactive drawing app where users sketch on a canvas and an AI model guesses what they\'re drawing in real time using ml5.js and DoodleNet.',
     description: 'Doodle.AI is an interactive web application that combines creativity with artificial intelligence. Users can draw directly on a browser-based canvas and watch as an AI model analyzes their sketch in real time, making predictions about what it thinks the drawing represents. As the doodle becomes more detailed, the predictions update live along with confidence scores, giving users instant feedback and a fun way to see how machine learning interprets their artwork.</p><p>The project was built using p5.js for the drawing canvas and user interactions, while ml5.js and DoodleNet handle the image recognition. DoodleNet is a pre-trained neural network that has learned to recognize hundreds of common doodles from a large dataset. Every time the user adds a new line to the canvas, the model reevaluates the drawing and generates updated predictions. This creates an engaging experience where users can experiment with different sketches and see how the AI\'s guesses evolve over time.</p><p>To make the application easy and enjoyable to use, I designed a clean interface with tools for changing colors, adjusting brush sizes, and clearing the canvas. The canvas is fully responsive and adapts to different screen sizes, making it accessible on both desktop and mobile devices. The real-time prediction panel keeps users engaged by displaying the AI\'s top guesses and confidence levels as they draw.</p><p>This project was a great way to explore machine learning in a practical and interactive setting. By using ml5.js, which is built on top of TensorFlow.js, I was able to integrate AI directly into the browser without needing a backend server. Doodle.AI demonstrates how modern web technologies and machine learning can work together to create applications that are both educational and entertaining, while giving users a hands-on look at how artificial intelligence recognizes patterns and images.',
     mediaItems: [
-      { type: 'placeholder', label: 'Project Image 1' }
+      { type: 'image', src: 'imgs/doodleAI.png', label: 'Doodle.AI Canvas' },
+      { type: 'image', src: 'imgs/DoodleAI (1).png', label: 'Live Prediction Panel' },
+      { type: 'image', src: 'imgs/DoodleAI (2).png', label: 'Drawing Tools' }
     ],
     challenges: [
       { title: 'Real-Time Inference', description: 'Running DoodleNet inference on every canvas update without blocking the UI, keeping predictions feeling instant as the user draws.' },
