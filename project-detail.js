@@ -23,17 +23,9 @@ mediaItems: [
     type: 'video',
     src: 'imgs/GalloShowdownVid.mp4',
     label: 'Real-time Metrics'
-  },
-  {
-    type: 'placeholder',
-    label: 'Custom Reports'
   }
 ],
-    challenges: [
-      { title: 'Performance at Scale', description: 'Optimizing queries across 2M+ daily active users and billion-row datasets while maintaining sub-200ms latency.' },
-      { title: 'Real-time Updates', description: 'Implementing WebSocket connections for live data streaming without overwhelming client resources.' },
-      { title: 'Complex Visualizations', description: 'Rendering D3.js visualizations with thousands of data points without frame rate drops.' }
-    ],
+    challenges: [],
     nextProject: '002'
   },
   '002': {
@@ -43,14 +35,9 @@ mediaItems: [
     description: 'Agendi is a web app I built when I was first learning what ChatGPT could actually do with code. HTML, CSS, and JavaScript on the front, with a small Node server that uses your Canvas API token to pull your schoolwork into one page: current grades, most recent grades, due dates, teacher comments, GPA, all of it. Built specifically for canvas.colum.edu (Columbia College Chicago). It also runs a scheduler that quietly checks deadlines every 15 minutes and fires alerts at 24 hours out, 3 hours out, and overdue — so I stop missing assignments because I forgot to refresh Canvas. Next steps are user profiles, hardening it for safe public use, and then marketing, user testing, and actually growing it.',
     mediaItems: [
       { type: 'video',  src: 'imgs/AgendiRecording.mp4', label: 'Component Library' },
-      { type: 'image', src: 'imgs/AgendiSS.webp', label: 'Storybook UI' },
-      { type: 'placeholder', label: 'Token System' }
+      { type: 'image', src: 'imgs/AgendiSS.webp', label: 'Storybook UI' }
     ],
-    challenges: [
-      { title: 'Team Alignment', description: 'Managing 120+ components across three teams with different design languages and requirements.' },
-      { title: 'Token Pipeline', description: 'Creating an automated system for syncing design tokens between Figma and code.' },
-      { title: 'Scalability', description: 'Ensuring the system scales as new components are added without performance degradation.' }
-    ],
+    challenges: [],
     techStack: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'PostgreSQL', 'Canvas API'],
     nextProject: '003'
   },
@@ -61,8 +48,7 @@ mediaItems: [
     description: 'Chess Learning is a Windows desktop application built in C# using WPF and .NET 9 to help users learn how chess pieces move. The application displays a standard 8×8 chessboard with all pieces in their starting positions. When a user clicks on a piece, the program highlights every legal move it can make — green squares for valid moves and red squares for capture opportunities. A status bar shows the current player\'s turn and the selected piece, making it easy to follow the game and understand movement rules.\n\nThe project follows the MVVM design pattern, separating the user interface from the game logic. The chess engine is built around an abstract Piece class, with individual classes for pawns, rooks, bishops, knights, queens, and kings. Each piece contains its own movement logic, while a Board class manages piece locations and move validation. The ViewModel handles user interactions, turn tracking, and board highlighting.\n\nThis project was built to strengthen my understanding of object-oriented programming, WPF development, and MVVM architecture. Rather than targeting every advanced chess rule, I focused on building a clean, organized codebase that demonstrates inheritance, polymorphism, data binding, and separation of concerns in a real-world .NET desktop application.',
     mediaItems: [
       { type: 'video', src: 'imgs/chessDemoVId.mp4', label: 'Chess Learning Demo' },
-      { type: 'image', src: 'imgs/ChessDemoPic.png', label: 'Chessboard Starting Position' },
-      { type: 'placeholder', label: 'Capture Indicators' }
+      { type: 'image', src: 'imgs/ChessDemoPic.png', label: 'Chessboard Starting Position' }
     ],
     challenges: [
       { title: 'Per-Piece Move Logic', description: 'Building an abstract Piece class with six concrete subclasses, each owning its own movement rules while sharing a common validation interface.' },
@@ -97,14 +83,9 @@ mediaItems: [
     description: "A browser-based clone of Wordle I built in my Programming 2 class. The goal was simple: stand up a real JavaScript project I could actually deploy and play. You get six guesses to land a random 5-letter word from a ~500-word dictionary, with the usual blue/yellow/gray hints and an on-screen keyboard that colors itself as you go. When the game ends you can copy a spoiler-free emoji grid to share, same as the original. Everything runs from a single `index.html` — no frameworks, no server, no dependencies beyond a Google Font. Next steps would be user profiles, leaderboards, a bigger word list, and additional game modes.",
     mediaItems: [
       { type: 'video', src: 'imgs/wordlevid.mp4', label: 'Wordle Demo' },
-      { type: 'image', src: 'imgs/wordleW.webp', label: 'Wordle Screenshot' },
-      { type: 'placeholder', label: 'Placeholder' }
+      { type: 'image', src: 'imgs/wordleW.webp', label: 'Wordle Screenshot' }
     ],
-    challenges: [
-      { title: 'Conversion Rate Optimization', description: 'Reducing friction in the checkout process while maintaining security and compliance.' },
-      { title: 'Performance at Scale', description: 'Serving millions of products with sub-500ms page load times.' },
-      { title: 'Inventory Integration', description: 'Real-time sync between frontend and Shopify inventory system.' }
-    ],
+    challenges: [],
     techStack: ['HTML', 'CSS', 'JavaScript'],
     nextProject: '006'
   },
@@ -118,11 +99,7 @@ mediaItems: [
       { type: 'image', src: 'imgs/FinBotDemoStill.png', label: 'FinBot.AI Dashboard' },
       { type: 'image', src: 'imgs/FinBotDemoGraph.png', label: 'Spending Category Breakdown' }
     ],
-    challenges: [
-      { title: 'Complex Data Workflows', description: 'Managing intricate prompt chains and model evaluation pipelines.' },
-      { title: 'Collaboration Features', description: 'Enabling team collaboration on prompt development without version conflicts.' },
-      { title: 'LLM Integration', description: 'Building adapters for multiple LLM providers with consistent interfaces.' }
-    ],
+    challenges: [],
     techStack: ['React', 'Vite', 'Tailwind CSS', 'Python', 'FastAPI', 'pdfplumber', 'pandas', 'Claude API'],
     nextProject: '007'
   },
@@ -180,27 +157,27 @@ mediaItems: [
     nextProject: '010'
   },
   '010': {
-    title: 'Project Title',
+    title: 'CODE102 Portfolio',
     number: '010',
-    overview: 'Brief overview of the project.',
-    description: 'Add your detailed project description here. Explain the context, goals, and key outcomes of the project.',
+    overview: '',
+    description: '',
     mediaItems: [
-      { type: 'placeholder', label: 'Project Image 1' }
+      { type: 'image', src: 'imgs/code102landing.png', label: 'CODE102 Portfolio Landing' }
     ],
     challenges: [],
-    techStack: ['Stack', 'Tools'],
+    techStack: [],
     nextProject: '011'
   },
   '011': {
-    title: 'Project Title',
+    title: 'Roulette',
     number: '011',
-    overview: 'Brief overview of the project.',
-    description: 'Add your detailed project description here. Explain the context, goals, and key outcomes of the project.',
+    overview: '',
+    description: '',
     mediaItems: [
-      { type: 'placeholder', label: 'Project Image 1' }
+      { type: 'image', src: 'imgs/rouletterLanding.png', label: 'Roulette Wheel & Table' }
     ],
     challenges: [],
-    techStack: ['Stack', 'Tools'],
+    techStack: [],
     nextProject: '012'
   },
   '012': {
@@ -209,7 +186,9 @@ mediaItems: [
     overview: 'A single-page scrollytelling experience that uses an ocean descent as a metaphor for appreciating the odds you\'ve already beaten — and becoming the shark.',
     description: '"Odds of You" is a single-page, scrollytelling web experience created by Charles M. Balderas that uses the metaphor of an ocean descent to frame a motivational narrative around statistics. As the user scrolls, they "dive" from the sunlit surface into progressively darker waters, encountering real-world data at each depth: only 15% of people are born in first-world countries, just 7% have access to higher education, and roughly 27% of college graduates land a job in their field of study. Each statistic is paired with a reflective message urging the reader to appreciate their privileges and take ownership of their success. The visual descent—complete with caustic light shafts, fish schools, marine snow particles, and a depth gauge counting feet—transforms dry numbers into an emotionally resonant journey.</p><p>Technically, the project is built entirely with vanilla HTML, CSS, and JavaScript (no frameworks), leveraging scroll-linked animations, intersection observers, CSS custom properties, and spring-physics-based motion to create a polished, cinematic feel. A continuous depth-grade overlay darkens and cools the color palette as the user scrolls, while mouse-driven parallax on ambient layers adds subtle interactivity. The site is accessibility-conscious, with a prefers-reduced-motion path that disables looping animations while preserving content readability. Typography uses Cormorant Garamond for elegant editorial headlines and JetBrains Mono for the data-driven numerical elements, reinforcing the blend of story and statistics.</p><p>The narrative culminates in the "abyss" section, where a shark emerges as the central metaphor: it survives not through aggression but through relentless forward motion, reading the current, and committing fully. This serves as the project\'s thesis — that in a world of long odds and fierce competition, success belongs to those who adapt and never stop moving.',
     mediaItems: [
-      { type: 'placeholder', label: 'Project Image 1' }
+      { type: 'image', src: 'imgs/oddsOfYouLanding.png', label: 'Landing — Surface Dive' },
+      { type: 'image', src: 'imgs/oddsOfYouMid.png', label: 'Depth Statistic — Where You Begin' },
+      { type: 'image', src: 'imgs/oddsOfYouFooter.png', label: 'Abyss — Become The Shark' }
     ],
     challenges: [
       { title: 'Scroll-Linked Animation', description: 'Coordinating intersection observers, scroll progress values, and spring-physics motion to produce a cinematic descent without using any animation frameworks.' },
